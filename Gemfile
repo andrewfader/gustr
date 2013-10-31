@@ -9,6 +9,10 @@ gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'haml'
+gem 'leaflet-rails', github: 'axyjo/leaflet-rails'
+gem 'geocoder'
+gem 'rails_12factor'
 
 group :doc do
   gem 'sdoc', require: false
