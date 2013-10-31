@@ -13,6 +13,7 @@ gem 'haml'
 gem 'leaflet-rails', github: 'axyjo/leaflet-rails'
 gem 'geocoder'
 gem 'rails_12factor'
+gem 'devise'
 
 group :doc do
   gem 'sdoc', require: false

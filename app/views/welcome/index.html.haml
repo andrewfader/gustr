@@ -1,1 +1,7 @@
-= map(:center => { :latlng => [@lat, @long], :zoom => 18 }, :markers => [ { :latlng => [51.52238797921441, -0.08366235665359283], :popup => "Hello!" } ])
+- unless current_user
+  = link_to "Sign up", new_user_registration_path
+  = link_to "Sign in", new_user_session_path
+- else
+  = link_to "Log out", destroy_user_session_path
+-# = map(:center => { :latlng => [@lat, @long], :zoom => 18 }, :markers => [ { :latlng => [51.52238797921441, -0.08366235665359283], :popup => "Hello!" } ])
+#map
