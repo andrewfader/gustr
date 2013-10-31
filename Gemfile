@@ -2,18 +2,20 @@ source 'https://rubygems.org'
 
 # gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
+gem 'devise'
+gem 'geocoder'
+gem 'haml'
+gem 'inherited_resources'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
+gem 'leaflet-rails', github: 'axyjo/leaflet-rails'
 gem 'pg'
 gem 'rails', '4.0.0'
+gem 'rails_12factor'
 gem 'sass-rails', '~> 4.0.0'
+gem 'simple_form'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-gem 'haml'
-gem 'leaflet-rails', github: 'axyjo/leaflet-rails'
-gem 'geocoder'
-gem 'rails_12factor'
-gem 'devise'
 
 group :doc do
   gem 'sdoc', require: false

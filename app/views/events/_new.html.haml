@@ -1,0 +1,6 @@
+= simple_form_for Event.new do |f|
+  = f.input :name
+  = f.input :business_id, as: :select, collection: Business.all
+  = f.input :address
+  = f.input :description
+  = f.submit

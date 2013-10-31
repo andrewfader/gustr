@@ -17,4 +17,12 @@ function readyUp() {
     }, function() {
     });
   }
+  $('#biz').click(function(e) {
+    e.preventDefault();
+    $('.new_biz').modal();
+  });
+  $('#evt').click(function(e) {
+    e.preventDefault();
+    $('.new_evt').modal();
+  });
 }
