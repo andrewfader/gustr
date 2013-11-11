@@ -1,0 +1,8 @@
+%h1
+  Profile for #{@user.first_name} #{@user.last_name}
+  = link_to "Edit", edit_registration_path(@user)
+%ul
+  %li Email #{@user.email}
+  %li City: #{@user.city}
+  %li Zip: #{@user.zip}
+  %li Birthday: #{@user.birthdate} (#{time_ago_in_words(@user.birthdate)})

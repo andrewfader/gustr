@@ -3,4 +3,5 @@ Gustr::Application.routes.draw do
   root to: 'welcome#index'
   resources :businesses
   resources :events
+  resources :users
 end

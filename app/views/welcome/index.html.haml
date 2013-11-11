@@ -3,6 +3,7 @@
   = link_to "Sign in", new_user_session_path
 - else
   = link_to "Log out", destroy_user_session_path
+  = link_to "My profile", user_path(current_user)
 -# = map(:center => { :latlng => [@lat, @long], :zoom => 18 }, :markers => [ { :latlng => [51.52238797921441, -0.08366235665359283], :popup => "Hello!" } ])
 #map
 = link_to "Add business", "#", id: "biz"
