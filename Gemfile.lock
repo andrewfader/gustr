@@ -19,6 +19,14 @@ GIT
       railties (>= 3.1.0)
 
 GIT
+  remote: git://github.com/nvd/yelpster.git
+  revision: 5dd6481cc9e5a1bb1f09ba5128df83fbfd03781f
+  specs:
+    yelpster (1.2.0)
+      json (>= 1.1.1)
+      oauth (>= 0.4.5)
+
+GIT
   remote: git://github.com/rails/turbolinks.git
   revision: 7b2dcd568c5251885c644bc5b502d1dcc9caabd0
   specs:
@@ -128,6 +136,7 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.2)
+    oauth (0.4.7)
     orm_adapter (0.5.0)
     pg (0.17.0)
     polyglot (0.3.3)
@@ -241,3 +250,4 @@ DEPENDENCIES
   sqlite3
   turbolinks!
   uglifier (>= 1.3.0)
+  yelpster!

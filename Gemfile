@@ -18,6 +18,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'simple_form'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'yelpster', github: 'nvd/yelpster'
 
 group :doc do
   gem 'sdoc', require: false
