@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
+//= require autocomplete-rails
 //= require turbolinks
 //= require leaflet
 //= require_tree ../../../vendor/assets/javascripts

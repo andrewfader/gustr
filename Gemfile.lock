@@ -1,8 +1,29 @@
 GIT
   remote: git://github.com/axyjo/leaflet-rails.git
-  revision: 0f50faaa35d41e8ba24c73c97d265e061b159d81
+  revision: fceb3e4e1e46fa87e8b7cfff58587730fe69be7a
   specs:
-    leaflet-rails (0.6.2)
+    leaflet-rails (0.7.0)
+
+GIT
+  remote: git://github.com/crowdint/rails3-jquery-autocomplete.git
+  revision: 728b7b4815d0d4a2baa6adc5dd352eaaae23c8dd
+  specs:
+    rails3-jquery-autocomplete (1.0.11)
+      rails (>= 3.0)
+
+GIT
+  remote: git://github.com/joliss/jquery-ui-rails.git
+  revision: 4aa7de5ced2b5910b971f84c053871e3147ffd8c
+  specs:
+    jquery-ui-rails (4.1.0)
+      railties (>= 3.1.0)
+
+GIT
+  remote: git://github.com/rails/turbolinks.git
+  revision: 7b2dcd568c5251885c644bc5b502d1dcc9caabd0
+  specs:
+    turbolinks (2.0.0)
+      coffee-rails
 
 GEM
   remote: https://rubygems.org/
@@ -38,7 +59,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
-    coderay (1.0.9)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -55,13 +76,13 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
-    devise (3.1.1)
+    devise (3.2.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    diff-lcs (1.2.4)
+    diff-lcs (1.2.5)
     diffy (3.0.1)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -70,7 +91,7 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
-    haml (4.0.3)
+    haml (4.0.4)
       tilt
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
@@ -107,12 +128,12 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.2)
-    orm_adapter (0.4.0)
+    orm_adapter (0.5.0)
     pg (0.17.0)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
-    pry (0.9.12.2)
-      coderay (~> 1.0.5)
+    pry (0.9.12.3)
+      coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
     pry-debugger (0.2.2)
@@ -170,7 +191,7 @@ GEM
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
-    slop (3.4.6)
+    slop (3.4.7)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -188,15 +209,13 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.3.0)
-      coffee-rails
     tzinfo (0.3.38)
-    uglifier (2.3.0)
+    uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
-    yard (0.8.7.2)
+    yard (0.8.7.3)
 
 PLATFORMS
   ruby
@@ -210,13 +229,15 @@ DEPENDENCIES
   jazz_hands
   jbuilder (~> 1.2)
   jquery-rails
+  jquery-ui-rails!
   leaflet-rails!
   pg
   rails (= 4.0.0)
+  rails3-jquery-autocomplete!
   rails_12factor
   sass-rails (~> 4.0.0)
   sdoc
   simple_form
   sqlite3
-  turbolinks
+  turbolinks!
   uglifier (>= 1.3.0)

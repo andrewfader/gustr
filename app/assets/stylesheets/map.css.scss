@@ -1,10 +1,24 @@
-#map {
-  width: 500px;
-  height: 500px;
+body, #map {
+  width: 100%;
+  min-height: 500px;
+  height: 100%;
+  display: block;
+  margin:0;
+  padding: 0;
 }
 #simplemodal-container {
+  position: absolute !important;
+  top: 55% !important;
   background-color: lightgrey;
+  border-radius: 20px;
+  border: 1px solid darkgray;
+  font-family: Calibri, Tahoma, Arial;
+  padding: 15px;
+  z-index: 2 !important;
 }
 .hidden {
   display: none;
+}
+.ui-autocomplete {
+  z-index: 999 !important;
 }

@@ -4,4 +4,7 @@ Gustr::Application.routes.draw do
   resources :businesses
   resources :events
   resources :users
+  resources :keywords do
+    get :autocomplete_keyword_name, on: :collection
+  end
 end
