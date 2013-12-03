@@ -4,7 +4,8 @@
   <title>Gustr</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
-<script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ1M9CIeCufVkulo1zYFtJ-xZsYJD81sM&sensor=true" %>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
   <%= csrf_meta_tags %>
 </head><body><%= yield %></body></html>

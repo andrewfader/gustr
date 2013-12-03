@@ -1,8 +1,9 @@
-#map
-.searchbox
-  %em Gustr
-  %h2 Search for a business
-  =simple_form_for Keyword.new do |f|
-    =f.input :name
-    =f.submit "search"
-  =@resp
+%input#pac-input.controls{:placeholder => "Enter a location", :type => "text"}/
+#type-selector.controls
+  %input#changetype-all{:checked => "checked", :name => "type", :type => "radio"}/
+  %label{:for => "changetype-all"} All
+  %input#changetype-establishment{:name => "type", :type => "radio"}/
+  %label{:for => "changetype-establishment"} Establishments
+  %input#changetype-geocode{:name => "type", :type => "radio"}/
+  %label{:for => "changetype-geocode"} Geocodes
+#map-canvas
