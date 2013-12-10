@@ -65,7 +65,7 @@ function readyUp() {
           ].join(' ');
         }
 
-        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+        infowindow.setContent('<div><strong><a href="/places/show?name=' + place.name + '">' + place.name + '</a></strong><br>' + address);
         infowindow.open(map, marker);
       });
 
@@ -83,6 +83,7 @@ function readyUp() {
       setupClickListener('changetype-geocode', ['geocode']);
     });
   }
+}
 
   // });
   // });
@@ -159,4 +160,3 @@ function readyUp() {
   // });
   // }
 
-}

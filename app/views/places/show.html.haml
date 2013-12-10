@@ -1,0 +1,11 @@
+%h1=@place.name
+- if @place.graphics.present?
+  %ul
+    -@place.graphics.each do |graphic|
+      %li
+        =image_tag(graphic.upload.thumb.url)
+
+= simple_form_for [@place, @place.graphics.build] do |f|
+  = f.input :place_id, as: :hidden,input_html: {value: @place.id}
+  = f.input :upload
+  = f.submit

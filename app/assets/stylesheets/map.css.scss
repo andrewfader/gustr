@@ -20,3 +20,7 @@ body, #map-canvas {
 .ui-autocomplete {
   z-index: 999 !important;
 }
+ul, li {
+  list-decoration: none;
+  display: inline-block;
+}
