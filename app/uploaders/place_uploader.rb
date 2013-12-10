@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'carrierwave/orm/activerecord'
 class PlaceUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 

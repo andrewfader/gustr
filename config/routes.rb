@@ -8,6 +8,7 @@ Gustr::Application.routes.draw do
     # get :autocomplete_keyword_name, on: :collection
   # end
   resources :places do
+    get :tag
     resources :graphics
   end
 end
