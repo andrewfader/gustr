@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
+gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'inherited_resources'
