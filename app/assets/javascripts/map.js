@@ -1,7 +1,12 @@
 $(document).bind('page:load', function() { readyUp() });
 $(document).ready(function() { readyUp() });
-
+function resizeBg() {
+  $('#map-canvas').css('min-height',$(window).height());
+}
 function readyUp() {
+  $(window).resize(resizeBg());
+  resizeBg();
+
 
   var mapOptions = {
     center: new google.maps.LatLng(-33.8688, 151.2195),
