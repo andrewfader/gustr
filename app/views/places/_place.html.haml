@@ -1,7 +1,7 @@
 %h1=@place.name
 =@place.address
 .yelp
-  = image_tag(@place.yelp["businesses"].first["rating_img_url"])
+  = image_tag(@place.star_rating)
 
 %table.tags
   %tr
