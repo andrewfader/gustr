@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base
   belongs_to :place
-  scope :local, -> {where(tag: 'local')}
-  scope :organic, -> {where(tag: 'organic')}
-  scope :grassfed, -> {where(tag: 'grassfed')}
-  scope :vegetarian, -> {where(tag: 'vegetarian')}
+  TAGS = ["Organic","Grass Fed", "Locally Sourced","Vegetarian"]
+  TAGS.each do |tag|
+    scope tag.underscore.to_sym, -> {where(tag: tag.underscore)}
+  end
 end

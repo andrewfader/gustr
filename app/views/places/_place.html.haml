@@ -1,25 +1,17 @@
 %h1=@place.name
+=@place.address
+.yelp
+  = image_tag(@place.yelp["businesses"].first["rating_img_url"])
 
 %table.tags
   %tr
     %td
       %h2 Gustr
-    %td
-      = link_to "Organic", place_tag_path(@place, tag: 'organic'), remote: true
-      .count
-        #{@place.tags.organic.count}
-    %td
-      = link_to "Grass Fed", place_tag_path(@place, tag: 'grassfed'), remote: true
-      .count
-        #{@place.tags.grassfed.count}
-    %td
-      = link_to "Locally Sourced", place_tag_path(@place, tag: 'local'), remote: true
-      .count
-        #{@place.tags.local.count}
-    %td
-      = link_to "Vegetarian", place_tag_path(@place, tag: 'vegetarian'), remote: true
-      .count
-        #{@place.tags.vegetarian.count}
+    - Tag::TAGS.each do |tag|
+      %td{class: @place.tagged_by(@ip, tag.underscore) ? 'green' : 'gray'}
+        = link_to tag, place_tag_path(@place, tag: tag.underscore), remote: true
+        .count
+          #{@place.tags.send(tag.underscore).count}
 
 -# - if @place.graphics.present?
   -# %ul

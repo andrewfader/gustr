@@ -104,7 +104,7 @@ function readyUp() {
           ].join(' ');
         }
 
-        infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name +'&address=' + address + '" onClick="showModal(event)">' + place.name + '</a></strong><br>' + address);
+        infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '" onClick="showModal(event)">' + place.name + '</a></strong><br>' + address);
         infowindow.open(map, marker);
       });
 
