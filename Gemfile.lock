@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/axyjo/leaflet-rails.git
-  revision: 97796da92e8c2a90b0269f94b64013e3f61e8ccd
-  specs:
-    leaflet-rails (0.7.1)
-
-GIT
   remote: git://github.com/crowdint/rails3-jquery-autocomplete.git
   revision: 1b7cdfb6a31fad9ba0ade990d0b6a609306cee5a
   specs:
@@ -163,7 +157,7 @@ GEM
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
     orm_adapter (0.5.0)
-    pg (0.17.0)
+    pg (0.17.1)
     polyglot (0.3.3)
     posix-spawn (0.3.8)
     pry (0.9.12.4)
@@ -275,7 +269,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails!
-  leaflet-rails!
   mini_magick
   pg
   rails (= 4.0.0)

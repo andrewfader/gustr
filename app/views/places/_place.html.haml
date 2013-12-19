@@ -1,11 +1,8 @@
 %span.simplemodal-close
   Close
 %h1=@place.name
-=@place.address
-.yelp
-  = image_tag(@place.star_rating)
 
-%table.tags
+%table.tags.topbar
   %tr
     %td
       %h2 Gustr
@@ -14,6 +11,20 @@
         = link_to tag, place_tag_path(@place, tag: tag.underscore), remote: true
         .count
           #{@place.tags.send(tag.underscore).count}
+%hr
+=@place.address
+.yelp
+  = image_tag(@place.star_rating)
+
+%hr
+%hr
+
+%strong What do you think? Is this place:
+%table.tags
+  %tr
+    - Tag::TAGS.each do |tag|
+      %td{class: @place.tagged_by(@ip, tag.underscore) ? 'green' : 'gray'}
+        = link_to tag, place_tag_path(@place, tag: tag.underscore), remote: true
 
 -# - if @place.graphics.present?
   -# %ul

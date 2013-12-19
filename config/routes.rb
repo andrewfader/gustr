@@ -1,5 +1,5 @@
 Gustr::Application.routes.draw do
-  # devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}
   root to: 'welcome#index'
   # resources :businesses
   # resources :events

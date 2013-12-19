@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219014754) do
+ActiveRecord::Schema.define(version: 20131219031837) do
 
   create_table "businesses", force: true do |t|
     t.string   "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20131219014754) do
     t.string   "city"
     t.string   "zip"
     t.date     "birthdate"
+    t.string   "tag_path"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
