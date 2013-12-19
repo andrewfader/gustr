@@ -3,6 +3,36 @@ $(document).ready(function() { readyUp() });
 function resizeBg() {
   $('#map-canvas').css('min-height',$(window).height());
 }
+var map;
+function showModal(event) {
+  event.preventDefault();
+
+  $.get($(event.toElement).attr('href'), function(data) {
+    $.modal(data, {opacity: 50,
+            autoPosition: true,
+            position: '0 50%',
+            onOpen: function(dialog) {
+              dialog.overlay.fadeIn('slow', function() {
+                dialog.container.slideDown('slow', function() {
+                  dialog.data.fadeIn('slow');
+                  google.maps.event.addListenerOnce(map, 'resize', function() {
+                    map.setCenter(center);
+                    google.maps.event.trigger(map, "resize");
+                  });
+                  var tagRefresh = function tagRefresh(e) {
+                    e.preventDefault();
+                    $.get($(e.originalEvent.toElement).attr('href'), function(data) {
+                      $($(e.originalEvent.toElement).closest("table").parent()).html(data);
+                      $('table.tags a').on('click', function(e) { tagRefresh(e) });
+                    });
+                  }
+                  $('table.tags a').on('click', function(e) { tagRefresh(e) });
+                });
+              });
+            }}
+  );
+  });
+}
 function readyUp() {
   $(window).resize(resizeBg());
   resizeBg();
@@ -15,7 +45,7 @@ function readyUp() {
         center: new google.maps.LatLng(lat, lng),
         zoom: 13
       };
-      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
       var input = document.getElementById('pac-input');
 
@@ -65,7 +95,7 @@ function readyUp() {
           ].join(' ');
         }
 
-        infowindow.setContent('<div><strong><a href="/places/show?name=' + place.name + '">' + place.name + '</a></strong><br>' + address);
+        infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name="' + place.name +'" onClick="showModal(event)">' + place.name + '</a></strong><br>' + address);
         infowindow.open(map, marker);
       });
 

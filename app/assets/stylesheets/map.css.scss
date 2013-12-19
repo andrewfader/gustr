@@ -3,16 +3,19 @@ body, #map-canvas {
   display: block;
   margin:0;
   padding: 0;
+  z-index: 1 !important;
 }
 #simplemodal-container {
   position: absolute !important;
-  top: 55% !important;
   background-color: lightgrey;
   border-radius: 20px;
   border: 1px solid darkgray;
   font-family: Calibri, Tahoma, Arial;
   padding: 15px;
-  z-index: 2 !important;
+  z-index: 999 !important;
+}
+#simplemodal-overlay {
+  z-index: 999 !important;
 }
 .hidden {
   display: none;

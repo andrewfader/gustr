@@ -1,0 +1,31 @@
+%h1=@place.name
+
+%table.tags
+  %tr
+    %td
+      = link_to "Organic", place_tag_path(@place, tag: 'organic'), remote: true
+      .count
+        #{@place.tags.organic.count}
+    %td
+      = link_to "Grass Fed", place_tag_path(@place, tag: 'grassfed'), remote: true
+      .count
+        #{@place.tags.grassfed.count}
+    %td
+      = link_to "Locally Sourced", place_tag_path(@place, tag: 'local'), remote: true
+      .count
+        #{@place.tags.local.count}
+    %td
+      = link_to "Vegetarian", place_tag_path(@place, tag: 'vegetarian'), remote: true
+      .count
+        #{@place.tags.vegetarian.count}
+
+-# - if @place.graphics.present?
+  -# %ul
+    -# -@place.graphics.each do |graphic|
+      -# %li
+        -# =image_tag(graphic.upload.thumb.url)
+
+-# = simple_form_for [@place, @place.graphics.build] do |f|
+  -# = f.input :place_id, as: :hidden,input_html: {value: @place.id}
+  -# = f.input :upload
+  -# = f.submit

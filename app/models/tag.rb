@@ -3,5 +3,5 @@ class Tag < ActiveRecord::Base
   scope :local, -> {where(tag: 'local')}
   scope :organic, -> {where(tag: 'organic')}
   scope :grassfed, -> {where(tag: 'grassfed')}
-  scope :homemade, -> {where(tag: 'homemade')}
+  scope :vegetarian, -> {where(tag: 'vegetarian')}
 end
