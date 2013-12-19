@@ -11,13 +11,20 @@ class Place < ActiveRecord::Base
   end
 
   def yelp
-    @yelp ||= client = Yelp::Client.new; request = Location.new(term: self.name, address: self.address); client.search request
+    unless @yelp
+      client = Yelp::Client.new
+      request = Location.new(term: self.name, address: self.address)
+      @yelp = client.search(request)
+    end
+    @yelp
   end
 
   private
   def get_star_rating
-    self.star_rating = yelp["businesses"].first["rating_img_url"]
-    self.save!
+    if yelp.present? && yelp["businesses"].present?
+      self.star_rating = yelp["businesses"].first["rating_img_url"]
+      self.save!
+    end
   end
 
 end

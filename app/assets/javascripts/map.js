@@ -28,6 +28,7 @@ function showModal(event) {
                         $(div).css('margin-left',width);
                       });
                       $('table.tags a').on('click', function(e) { tagRefresh(e) });
+                      $('.simplemodal-close').on('click', function(e) { $.modal.close(); });
                     });
 
                   }
@@ -36,6 +37,7 @@ function showModal(event) {
                     $(div).css('margin-left',width);
                   });
                   $('table.tags a').on('click', function(e) { tagRefresh(e) });
+                  $('.simplemodal-close').on('click', function(e) { $.modal.close(); });
                 });
               });
             }}
