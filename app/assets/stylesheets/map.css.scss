@@ -27,3 +27,19 @@ ul, li {
   list-decoration: none;
   display: inline-block;
 }
+table.tags {
+  td {
+    background-color: green;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      &:visited {
+        color: white;
+      }
+    }
+  }
+}
