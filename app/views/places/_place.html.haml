@@ -3,6 +3,8 @@
 %table.tags
   %tr
     %td
+      %h2 Gustr
+    %td
       = link_to "Organic", place_tag_path(@place, tag: 'organic'), remote: true
       .count
         #{@place.tags.organic.count}

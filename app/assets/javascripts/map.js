@@ -23,9 +23,18 @@ function showModal(event) {
                     e.preventDefault();
                     $.get($(e.originalEvent.toElement).attr('href'), function(data) {
                       $($(e.originalEvent.toElement).closest("table").parent()).html(data);
+                      $('td .count').map(function(index, div) {
+                        width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
+                        $(div).css('margin-left',width);
+                      });
                       $('table.tags a').on('click', function(e) { tagRefresh(e) });
                     });
+
                   }
+                  $('td .count').map(function(index, div) {
+                    width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
+                    $(div).css('margin-left',width);
+                  });
                   $('table.tags a').on('click', function(e) { tagRefresh(e) });
                 });
               });
