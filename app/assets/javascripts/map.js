@@ -73,7 +73,7 @@ function readyUp() {
         }
       });
     }
-    if (('#pac-input').length == 0) {
+    if ($('#pac-input').length == 0) {
       $('body').append('<input type="text" id="pac-input" class="controls"></input>');
     }
     var input = document.getElementById('pac-input');
@@ -137,9 +137,9 @@ function readyUp() {
     $.modal(html);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-    $('.simplemodal-close').on('click', function(e) { $.modal.close(); });
+    $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close(); });
   }
-  if (('#pac-input').length == 0) {
+  if ($('#pac-input').length == 0) {
     $('body').append('<input type="text" id="pac-input" class="controls"></input>');
     readyUp();
   }

@@ -1,5 +1,5 @@
 %span.simplemodal-close
-  Close
+  =link_to 'Close', '/'
 %h1=@place.name
 
 %table.tags.topbar
@@ -8,7 +8,7 @@
       %h2 Gustr
     - Tag::TAGS.each do |tag|
       %td{class: @place.tags.send(tag.underscore).present? ? 'green' : 'gray'}
-        = link_to tag, place_tag_path(@place, tag: tag.underscore), remote: true
+        = link_to tag, place_tag_path(@place, tag: tag.underscore)
         .count
           #{@place.tags.send(tag.underscore).count}
 %hr
@@ -24,7 +24,7 @@
   %tr
     - Tag::TAGS.each do |tag|
       %td{class: @place.tagged_by(@ip, tag.underscore) ? 'green' : 'gray'}
-        = link_to tag, place_tag_path(@place, tag: tag.underscore), remote: true
+        = link_to tag, place_tag_path(@place, tag: tag.underscore)
 
 -# - if @place.graphics.present?
   -# %ul
