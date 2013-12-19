@@ -6,13 +6,6 @@ GIT
       rails (>= 3.0)
 
 GIT
-  remote: git://github.com/joliss/jquery-ui-rails.git
-  revision: abce5bed208e706b791f4e37f478ecd313942f7d
-  specs:
-    jquery-ui-rails (4.1.1)
-      railties (>= 3.1.0)
-
-GIT
   remote: git://github.com/nvd/yelpster.git
   revision: 5dd6481cc9e5a1bb1f09ba5128df83fbfd03781f
   specs:
@@ -268,7 +261,6 @@ DEPENDENCIES
   jazz_hands
   jbuilder (~> 1.2)
   jquery-rails
-  jquery-ui-rails!
   mini_magick
   pg
   rails (= 4.0.0)
