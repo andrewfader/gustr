@@ -2,7 +2,7 @@ class PlacesController < InheritedResources::Base
   layout false
   def show
     if params[:name]
-      @place = Place.find_or_create_by(name: params[:name])
+      @place = Place.find_or_create_by(name: params[:name], address: params[:address])
     else
       super
     end
