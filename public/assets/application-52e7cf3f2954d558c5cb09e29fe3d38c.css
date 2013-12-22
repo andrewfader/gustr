@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+body, #map-canvas {
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  z-index: 1 !important; }
+
+#simplemodal-container {
+  position: absolute !important;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid darkgray;
+  font-family: Calibri, Tahoma, Arial;
+  padding: 25px;
+  z-index: 999 !important; }
+
+#simplemodal-overlay {
+  z-index: 999 !important; }
+
+.hidden {
+  display: none; }
+
+.ui-autocomplete {
+  z-index: 999 !important; }
+
+ul, li {
+  list-decoration: none;
+  display: inline-block; }
+
+table.tags.topbar {
+  border-spacing: 0; }
+  table.tags.topbar td {
+    border-left: 0; }
+    table.tags.topbar td:nth-child(1) {
+      border-left: 1px solid darkslategray;
+      background-color: white;
+      color: black; }
+  table.tags.topbar .count {
+    position: absolute;
+    background-color: blue;
+    border: 1px solid darkslategray;
+    border-radius: 50%;
+    padding: 2px 8px 2px 8px;
+    text-align: center; }
+
+table.tags {
+  padding: 0;
+  border-spacing: 5px;
+  margin: 0; }
+  table.tags tr, table.tags tbody {
+    padding: 0;
+    margin: 0; }
+  table.tags td {
+    color: white;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid darkslategray; }
+    table.tags td.green {
+      background-color: green; }
+    table.tags td.gray {
+      background-color: gray; }
+    table.tags td a {
+      color: white;
+      text-decoration: none;
+      display: block; }
+      table.tags td a:visited {
+        color: white; }
+
+.tag {
+  border: 1px solid black; }
+
+h1 {
+  margin: 5px 0 5px 0; }
+
+h2 {
+  margin: 0; }
+
+.simplemodal-close {
+  float: right; }
+
+#toppanel {
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  color: black; }
+  #toppanel input {
+    margin-top: 10px;
+    width: 90%;
+    padding: 10px; }
+  #toppanel td a {
+    color: black; }
