@@ -29,7 +29,11 @@
 -@place.tags.each do |tag|
   .tag
     %ul
-      %li= image_tag tag.user.image_url
+      - if tag.user
+        %li
+          - if tag.user.image_url
+            = image_tag tag.user.image_url
+          = tag.user.name
       %li=tag.tag
       %li=tag.created_at.strftime('%m %d %Y')
 
