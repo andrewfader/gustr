@@ -22,6 +22,10 @@ class PlacesController < InheritedResources::Base
     render :show
   end
 
+  def index
+    render json: Tag.send(params[:filter]).map(&:place).compact.uniq.to_json
+  end
+
   private
   def login
     unless current_user

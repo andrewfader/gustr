@@ -1,4 +1,11 @@
-%input#pac-input.controls{:placeholder => "Enter a location", :type => "text"}/
+#toppanel
+  %h1 Gustr
+  %table.tags.topbar
+    %tr
+      - Tag::TAGS.each do |tag|
+        %td
+          = link_to tag, "/?filter=#{tag.underscore}"
+  %input#pac-input.controls{:placeholder => "Enter a location", :type => "text"}/
 #floater
   -if current_user
     = link_to "Log out", destroy_user_session_path, method: :delete

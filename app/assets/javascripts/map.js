@@ -4,6 +4,7 @@ function resizeBg() {
   $('#map-canvas').css('min-height',$(window).height());
 }
 var map;
+var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>'
 
 var tagRefresh = function tagRefresh(e) {
   e.preventDefault();
@@ -14,7 +15,7 @@ var tagRefresh = function tagRefresh(e) {
       $(div).css('margin-left',width);
     });
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-    $('.simplemodal-close').on('click', function(e) { $.modal.close(); });
+    // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close(); });
   });
 
 }
@@ -34,7 +35,7 @@ var showModal = function showModal(event) {
                     $(div).css('margin-left',width);
                   });
                   $('table.tags a').on('click', function(e) { tagRefresh(e) });
-                  $('.simplemodal-close').on('click', function(e) { $.modal.close(); });
+                  // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close(); $('#toppanel').show(); });
                 });
               });
             }}
@@ -73,15 +74,16 @@ function readyUp() {
         }
       });
     }
-    if ($('#pac-input').length == 0) {
-      $('body').append('<input type="text" id="pac-input" class="controls"></input>');
+    if ($('#toppanel').length == 0) {
+      $('body').append(toppanel);
     }
-    var input = document.getElementById('pac-input');
+    var input = document.getElementById('toppanel');
     var floater = document.getElementById('floater');
 
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    map.controls[google.maps.ControlPosition.TOP].push(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(floater);
 
+    var input = document.getElementById('pac-input');
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
     autocomplete.setTypes(['establishment']);
@@ -130,18 +132,39 @@ function readyUp() {
       infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '" onClick="showModal(event)">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
     });
+    if(document.location.href.indexOf("filter") != -1) {
+      $.get('/places' + document.location.href.split("/")[3], function(e) {
+        $(e).each(function (j, k) {
+          var marker = new google.maps.Marker({
+            map: map
+          });
+          geocoder.geocode( { 'address': k['address']}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              marker.setVisible(true);
+              marker.setPosition(results[0].geometry.location);
+              marker.setVisible(true);
+              var infowindow = new google.maps.InfoWindow();
+              infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k['name'] +'&address=' + k['address'] + '" onClick="showModal(event)">' + k['name'] + '</a></strong><br>' + k['address']);
+              infowindow.open(map, marker);
+            }
+          });
+        });
+      });
+    }
   }
   else {
     html = $('body').html();
-    $('body').html('<input type="text" id="pac-input" class="controls"></input><div id="map-canvas"></div>');
+    $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-    $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close(); });
+    // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close();});
   }
-  if ($('#pac-input').length == 0) {
-    $('body').append('<input type="text" id="pac-input" class="controls"></input>');
+  if ($('#toppanel').length == 0) {
+    $('body').append(toppanel);
     readyUp();
+    $('table.tags a').on('click', function(e) { tagRefresh(e) });
+    // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close();});
   }
 }
 
