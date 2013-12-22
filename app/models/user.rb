@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
+  has_many :tags
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -13,6 +14,7 @@ class User < ActiveRecord::Base
                          provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
+                         image_url:auth.info.image,
                          password:Devise.friendly_token[0,20]
                         )
     end

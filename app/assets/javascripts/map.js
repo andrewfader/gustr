@@ -15,6 +15,8 @@ var tagRefresh = function tagRefresh(e) {
       $(div).css('margin-left',width);
     });
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
+    $("#simplemodal-container").css('height', 'auto');
+    $(window).trigger('resize.simplemodal');
     // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close(); });
   });
 

@@ -26,6 +26,13 @@
       %td{class: @place.tagged_by(@ip, tag.underscore) ? 'green' : 'gray'}
         = link_to tag, place_tag_path(@place, tag: tag.underscore)
 
+-@place.tags.each do |tag|
+  .tag
+    %ul
+      %li= image_tag tag.user.image_url
+      %li=tag.tag
+      %li=tag.created_at.strftime('%m %d %Y')
+
 -# - if @place.graphics.present?
   -# %ul
     -# -@place.graphics.each do |graphic|

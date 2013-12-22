@@ -17,7 +17,7 @@ class PlacesController < InheritedResources::Base
     if tag.present?
       tag.first.destroy!
     else
-      tag = Tag.create!(user_ip: @ip, tag: params[:tag], place_id: @place.id)
+      tag = Tag.create!(user_ip: @ip, tag: params[:tag], place_id: @place.id, user_id: current_user.id)
     end
     render :show
   end
