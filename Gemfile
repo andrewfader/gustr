@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
+gem 'jshint_on_rails'
 gem 'modernizr-rails'
 gem 'omniauth'
 gem 'certified'

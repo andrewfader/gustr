@@ -1,9 +1,8 @@
-$(document).bind('page:load', function() { readyUp() });
-$(document).ready(function() { readyUp() });
 function resizeBg() {
   $('#map-canvas').css('min-height',$(window).height());
 }
 var map;
+var geocoder = new google.maps.Geocoder();
 var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>'
 
 var tagRefresh = function tagRefresh(e) {
@@ -11,13 +10,12 @@ var tagRefresh = function tagRefresh(e) {
   $.get($(e.originalEvent.toElement).attr('href'), function(data, response, xhr) {
     $($(e.originalEvent.toElement).closest("table").parent()).html(data);
     $('td .count').map(function(index, div) {
-      width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
+      var width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
       $(div).css('margin-left',width);
     });
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
-    // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close(); });
   });
 
 }
@@ -33,11 +31,10 @@ var showModal = function showModal(event) {
                 dialog.container.slideDown('slow', function() {
                   dialog.data.fadeIn('slow');
                   $('td .count').map(function(index, div) {
-                    width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
+                    var width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
                     $(div).css('margin-left',width);
                   });
                   $('table.tags a').on('click', function(e) { tagRefresh(e) });
-                  // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close(); $('#toppanel').show(); });
                 });
               });
             }}
@@ -51,11 +48,11 @@ function readyUp() {
     var mapOptions = {zoom: 13}
 
     if(navigator.geolocation) {
-      if ($('span.address').length == 0) {
+      if ($('span.address').length === 0) {
         navigator.geolocation.getCurrentPosition(function(position) {
           var lat = position.coords.latitude;
           var lng = position.coords.longitude;
-          latlng = new google.maps.LatLng(lat, lng);
+          var latlng = new google.maps.LatLng(lat, lng);
           if (map) {
             map.setCenter(latlng);
           }
@@ -68,7 +65,6 @@ function readyUp() {
     }
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     if ($('span.address')) {
-      geocoder = new google.maps.Geocoder();
       geocoder.geocode( { 'address': $('span.address').text()}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           map.setCenter(results[0].geometry.location);
@@ -76,7 +72,7 @@ function readyUp() {
         }
       });
     }
-    if ($('#toppanel').length == 0) {
+    if ($('#toppanel').length === 0) {
       $('body').append(toppanel);
     }
     var input = document.getElementById('toppanel');
@@ -85,7 +81,7 @@ function readyUp() {
     map.controls[google.maps.ControlPosition.TOP].push(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(floater);
 
-    var input = document.getElementById('pac-input');
+    input = document.getElementById('pac-input');
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
     autocomplete.setTypes(['establishment']);
@@ -140,13 +136,13 @@ function readyUp() {
           var marker = new google.maps.Marker({
             map: map
           });
-          geocoder.geocode( { 'address': k['address']}, function(results, status) {
+          geocoder.geocode( { 'address': k.address}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               marker.setVisible(true);
               marker.setPosition(results[0].geometry.location);
               marker.setVisible(true);
               var infowindow = new google.maps.InfoWindow();
-              infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k['name'] +'&address=' + k['address'] + '" onClick="showModal(event)">' + k['name'] + '</a></strong><br>' + k['address']);
+              infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '" onClick="showModal(event)">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
             }
           });
@@ -155,93 +151,19 @@ function readyUp() {
     }
   }
   else {
-    html = $('body').html();
+    var html = $('body').html();
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
     // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close();});
   }
-  if ($('#toppanel').length == 0) {
+  if ($('#toppanel').length === 0) {
     $('body').append(toppanel);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-    // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close();});
   }
 }
 
-// });
-// });
-// }, function() {
-// });
-// }
-// $('#biz').click(function(e) {
-// e.preventDefault();
-// $('.new_biz').modal();
-// });
-// $('#evt').click(function(e) {
-// e.preventDefault();
-// $('.new_evt').modal();
-// });
-// $(window).resize(function() {
-// $('#map').css('height',$(window).height() + 'px');
-// });
-// $('#map').css('height',$(window).height() + 'px');
-// $('.searchbox').modal();
-// var auth = {
-// consumerKey: "rOKiJUCwMm1-WCr2KwndzQ",
-// consumerSecret: "K9hMyrIjbk_Hz5wW7RefYx67xC4",
-// accessToken: "vb-PDP2wymAvFkMFjiGCaeVs3O8DQfSL",
-// accessTokenSecret: "jZBUcBHTlkfTespBg1c4IR1X9eU",
-// };
-
-// $('#keyword_name').keypress(function() {
-// if(navigator.geolocation) {
-// navigator.geolocation.getCurrentPosition(function(position) {
-// lat = position.coords.latitude;
-// lng = position.coords.longitude;
-
-// var accessor = {
-// consumerSecret: auth.consumerSecret,
-// tokenSecret: auth.accessTokenSecret
-// };
-
-// parameters = [];
-// parameters.push(['term', $("#keyword_name").val()]);
-// parameters.push(['ll',  lat + ',' + lng]);
-// parameters.push(['callback', 'cb']);
-// parameters.push(['oauth_consumer_key', auth.consumerKey]);
-// parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
-// parameters.push(['oauth_token', auth.accessToken]);
-// parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
-
-// var message = {
-// 'action': 'http://api.yelp.com/v2/search',
-// 'method': 'GET',
-// 'parameters': parameters
-// };
-
-// OAuth.setTimestampAndNonce(message);
-// OAuth.SignatureMethod.sign(message, accessor);
-
-// var parameterMap = OAuth.getParameterMap(message.parameters);
-// parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature)
-// $.ajax({
-// 'url': message.action,
-// 'data': parameterMap,
-// 'cache': true,
-// 'dataType': 'jsonp',
-// 'jsonpCallback': 'cb',
-// 'success': function(data, textStats, XMLHttpRequest) {
-// var newArr = new Array();
-// $(data['businesses']).map(function(a,b) {
-// newArr[a] = b['name'];
-// });
-// $('#keyword_name').autocomplete({ source: newArr});
-// }
-// });
-// });
-// }
-// });
-// }
-
+$(document).bind('page:load', function() { readyUp() });
+$(document).ready(function() { readyUp() });
