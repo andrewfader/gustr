@@ -8,13 +8,14 @@
       %h2 Gustr
     - Tag::TAGS.each do |tag|
       %td{class: @place.tags.send(tag.underscore).present? ? 'green' : 'gray'}
-        = link_to tag, place_tag_path(@place, tag: tag.underscore), {'data-no-turbolink' => true}
+        = link_to_function tag, "tagRefresh('#{place_tag_path(@place, tag: tag.underscore)}')", {'data-no-turbolink' => true}
         .count
           #{@place.tags.send(tag.underscore).count}
 %hr
 %span.address=@place.address
 .yelp
-  = image_tag(@place.star_rating)
+  %span= image_tag(@place.star_rating)
+  %span (Yelp)
 
 %hr
 %hr
@@ -24,7 +25,7 @@
   %tr
     - Tag::TAGS.each do |tag|
       %td{class: @place.tagged_by(@ip, tag.underscore) ? 'green' : 'gray'}
-        = link_to tag, place_tag_path(@place, tag: tag.underscore), {'data-no-turbolink' => true}
+        = link_to_function tag, "tagRefresh('#{place_tag_path(@place, tag: tag.underscore)}')", {'data-no-turbolink' => true}
 
 -@place.tags.each do |tag|
   .tag

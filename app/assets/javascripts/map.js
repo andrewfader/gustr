@@ -5,23 +5,19 @@ function resizeBg() {
   $('body').css('width',$(window).width());
 }
 var map;
+var autocomplete;
 var geocoder = new google.maps.Geocoder();
 var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
 
-function tagRefresh(e) {
-  var link = $(e.target).attr('href');
-  $.get(link, function(data) {
-    $(e.target).closest("table").parent().html(data);
+function tagRefresh(url) {
+  $.get(url, function(data) {
+    $("table.tags").parent().html(data);
     $('td .count').map(function(index, div) {
       var width = ($($(div).parent()).width()/2) - $(div).width() - 5 + 'px';
       $(div).css('margin-left',width);
     });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
-    $('table.tags.refresh a').on('click', function(e) {
-      e.preventDefault();
-      tagRefresh(e);
-    });
   });
 }
 function showModal(event) {
@@ -38,10 +34,6 @@ function showModal(event) {
                     $(div).css('margin-left', width);
                   });
                 });
-              });
-              $('table.tags.refresh a').on('click', function(e) {
-                e.preventDefault();
-                tagRefresh(e);
               });
             }});
   });
@@ -81,7 +73,7 @@ function readyUp() {
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(floater);
 
     input = document.getElementById('pac-input');
-    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
     autocomplete.setTypes(['establishment']);
 
@@ -106,6 +98,7 @@ function readyUp() {
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);  // Why 17? Because it looks good.
+        autocomplete.bindTo('bounds', map);
       }
       marker.setIcon(/** @type {google.maps.Icon} */({
         url: place.icon,
@@ -116,6 +109,7 @@ function readyUp() {
       }));
       marker.setPosition(place.geometry.location);
       marker.setVisible(true);
+      autocomplete.bindTo('bounds', map);
 
       var address = '';
       if (place.address_components) {
@@ -125,42 +119,41 @@ function readyUp() {
       infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
       // $('a.modalHere').on('click', function(e) {
-        // e.preventDefault();
-        // showModal(e);
+      // e.preventDefault();
+      // showModal(e);
       // });
     });
-    if(document.location.href.indexOf("filter") != -1) {
-      $.get('/places' + document.location.href.split("/")[3], function(e) {
-        $(e).each(function (j, k) {
-          var marker = new google.maps.Marker({
-            map: map
-          });
-          geocoder.geocode( {'address': k.address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              marker.setVisible(true);
-              marker.setPosition(results[0].geometry.location);
-              marker.setVisible(true);
-              var infowindow = new google.maps.InfoWindow();
-              infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
-              infowindow.open(map, marker);
-              // $('a.modalHere').on('click', function(e) {
-                // e.preventDefault();
-                // showModal(e);
-              // });
-            }
-          });
-        });
-      });
-    }
   } else {
     var html = $('body').html();
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
     readyUp();
   }
-  $('table.tags.refresh a').on('click', function(e) {
-    e.preventDefault();
-    tagRefresh(e);
+}
+function filter(tag) {
+  $.get('/places?filter=' + tag , function(e) {
+    $(e).each(function (j, k) {
+      var marker = new google.maps.Marker({
+        map: map
+      });
+      geocoder.geocode( {'address': k.address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (map.getBounds().contains(results[0].geometry.location)) {
+            marker.setVisible(true);
+            marker.setPosition(results[0].geometry.location);
+            marker.setVisible(true);
+            var infowindow = new google.maps.InfoWindow();
+            infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
+            infowindow.open(map, marker);
+            autocomplete.bindTo('bounds', map);
+            // $('a.modalHere').on('click', function(e) {
+            // e.preventDefault();
+            // showModal(e);
+            // });
+          }
+        }
+      });
+    });
   });
 }
 $(window).on('resize', function() { resizeBg(); });
