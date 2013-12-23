@@ -131,25 +131,29 @@ function readyUp() {
   }
 }
 var infowindows = new Array();
+var filtermarkers = new Array();
 function filter(tag) {
   $(infowindows).each(function(a, w) {
     w.close();
   });
+  $(filtermarkers).each(function(a, w) {
+    w.setVisible(false);
+  });
   $.get('/places?filter=' + tag , function(e) {
     $(e).each(function (j, k) {
-      var marker = new google.maps.Marker({
+      var findex = filtermarkers.length;
+      filtermarkers[findex] = new google.maps.Marker({
         map: map
       });
       geocoder.geocode( {'address': k.address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           if (map.getBounds().contains(results[0].geometry.location)) {
-            marker.setVisible(true);
-            marker.setPosition(results[0].geometry.location);
-            marker.setVisible(true);
-            index = infowindows.length;
+            filtermarkers[findex].setPosition(results[0].geometry.location);
+            filtermarkers[findex].setVisible(true);
+            var index = infowindows.length;
             infowindows[index] = new google.maps.InfoWindow();
             infowindows[index].setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
-            infowindows[index].open(map, marker);
+            infowindows[index].open(map, filtermarkers[findex]);
             autocomplete.bindTo('bounds', map);
             // $('a.modalHere').on('click', function(e) {
             // e.preventDefault();
