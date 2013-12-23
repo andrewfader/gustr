@@ -19,10 +19,8 @@ function tagRefresh(e) {
     });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
-    $('table.tags a').on('click', function(e) {
-      e.preventDefault();
-      tagRefresh(e);
-    });
+    $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+    $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
   });
 }
 function showModal(event) {
@@ -41,6 +39,8 @@ function showModal(event) {
                   });
                 });
               });
+              $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+              $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
             }});
   });
 }
@@ -121,8 +121,10 @@ function readyUp() {
         address = [ (place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || ''), (place.address_components[2] && place.address_components[2].short_name || '') ].join(' ');
       }
 
-      infowindow.setContent('<div><strong><a onClick="showModal(event)" class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
+      infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
+      $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+      $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
     });
     if(document.location.href.indexOf("filter") != -1) {
       $.get('/places' + document.location.href.split("/")[3], function(e) {
@@ -136,8 +138,10 @@ function readyUp() {
               marker.setPosition(results[0].geometry.location);
               marker.setVisible(true);
               var infowindow = new google.maps.InfoWindow();
-              infowindow.setContent('<div><strong><a onClick="showModal(event)" class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
+              infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
+              $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+              $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
             }
           });
         });
@@ -147,13 +151,13 @@ function readyUp() {
     var html = $('body').html();
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
+    readyUp();
   }
-  if ($('#toppanel').length === 0) {
-    $('body').append(toppanel);
-  }
+  $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+  $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
 }
 $(window).on('resize', function() { resizeBg(); });
 $('table.tags a').on('click', function(e) { tagRefresh(e); });
 $(document).on('ready', function() { readyUp(); } )
-// $(document).on('page:load', function() { readyUp(); } )
+$(document).on('page:load', function() { readyUp(); } )
 // google.maps.event.addDomListener(window, 'load', readyUp);
