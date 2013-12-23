@@ -18,7 +18,6 @@ function tagRefresh(e) {
     });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
-    $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
     $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
   });
 }
@@ -37,7 +36,6 @@ function showModal(event) {
                   });
                 });
               });
-              $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
               $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
             }});
   });
@@ -121,7 +119,6 @@ function readyUp() {
       infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
       $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
-      $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
     });
     if(document.location.href.indexOf("filter") != -1) {
       $.get('/places' + document.location.href.split("/")[3], function(e) {
@@ -138,7 +135,6 @@ function readyUp() {
               infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
               $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
-              $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
             }
           });
         });
@@ -150,9 +146,9 @@ function readyUp() {
     $.modal(html);
     readyUp();
   }
-  $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
-  $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
 }
+$('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+$('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
 $(window).on('resize', function() { resizeBg(); });
 $('table.tags a').on('click', function(e) { tagRefresh(e); });
 $(document).on('ready', function() { readyUp(); } )
