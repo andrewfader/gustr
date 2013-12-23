@@ -32,6 +32,8 @@ function showModal(url) {
                   $('td .count').map(function(index, div) {
                     var width = ($($(div).parent()).width()/2) - $(div).width() - 5 + 'px';
                     $(div).css('margin-left', width);
+                    $('body').append(toppanel);
+                    readyUp();
                   });
                 });
               });
