@@ -148,8 +148,7 @@ function readyUp() {
         });
       });
     }
-  }
-  else {
+  } else {
     var html = $('body').html();
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
@@ -160,6 +159,6 @@ function readyUp() {
 }
 $(window).on('resize', function() { resizeBg(); });
 $('table.tags a').on('click', function(e) { tagRefresh(e); });
-$(document).ready(function() { readyUp(); } )
+$(document).on('ready', function() { readyUp(); } )
 $(document).on('page:load', function() { readyUp(); } )
 google.maps.event.addDomListener(window, 'load', readyUp);
