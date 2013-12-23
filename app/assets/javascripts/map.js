@@ -18,7 +18,10 @@ function tagRefresh(e) {
     });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
-    $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
+    $('table.tags a').on('click', function(e) {
+      e.preventDefault();
+      tagRefresh(e);
+    });
   });
 }
 function showModal(event) {
@@ -36,7 +39,10 @@ function showModal(event) {
                   });
                 });
               });
-              $('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
+              $('table.tags a').on('click', function(e) {
+                e.preventDefault();
+                tagRefresh(e);
+              });
             }});
   });
 }
@@ -118,7 +124,10 @@ function readyUp() {
 
       infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
-      $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+      $('a.modalHere').on('click', function(e) {
+        e.preventDefault();
+        showModal(e);
+      });
     });
     if(document.location.href.indexOf("filter") != -1) {
       $.get('/places' + document.location.href.split("/")[3], function(e) {
@@ -134,7 +143,10 @@ function readyUp() {
               var infowindow = new google.maps.InfoWindow();
               infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
-              $('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
+              $('a.modalHere').on('click', function(e) {
+                e.preventDefault();
+                showModal(e);
+              });
             }
           });
         });
@@ -147,10 +159,7 @@ function readyUp() {
     readyUp();
   }
 }
-$('a.modalHere').on('click', function(e) { e.preventDefault(); showModal(e); });
-$('table.tags a').on('click', function(e) { e.preventDefault(); tagRefresh(e); });
 $(window).on('resize', function() { resizeBg(); });
-$('table.tags a').on('click', function(e) { tagRefresh(e); });
 $(document).on('ready', function() { readyUp(); } )
 $(document).on('page:load', function() { readyUp(); } )
 // google.maps.event.addDomListener(window, 'load', readyUp);
