@@ -2,7 +2,7 @@
   =link_to 'Close', '/'
 %h1=@place.name
 
-%table.tags.topbar
+%table.tags.topbar.refresh
   %tr
     %td
       %h2 Gustr
@@ -20,7 +20,7 @@
 %hr
 
 %strong What do you think? Is this place:
-%table.tags
+%table.tags.refresh
   %tr
     - Tag::TAGS.each do |tag|
       %td{class: @place.tagged_by(@ip, tag.underscore) ? 'green' : 'gray'}

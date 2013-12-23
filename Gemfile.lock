@@ -13,6 +13,13 @@ GIT
       json (>= 1.1.1)
       oauth (>= 0.4.5)
 
+GIT
+  remote: git://github.com/rails/turbolinks.git
+  revision: 176135140c4a6e4a74c9004033d2bb3dd0ae6fd1
+  specs:
+    turbolinks (2.1.0)
+      coffee-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -253,8 +260,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.1.0)
-      coffee-rails
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -295,7 +300,7 @@ DEPENDENCIES
   simple_form
   sqlite3
   therubyracer
-  turbolinks
+  turbolinks!
   uglifier
   unf
   yelpster!

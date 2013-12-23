@@ -4,7 +4,7 @@
     %tr
       - Tag::TAGS.each do |tag|
         %td
-          = link_to tag, "/?filter=#{tag.underscore}"
+          = link_to tag, "/?filter=#{tag.underscore}", {'data-no-turbolink' => true}
   %input#pac-input.controls{:placeholder => "Enter a location", :type => "text"}/
 #floater
   -if current_user

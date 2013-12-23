@@ -23,7 +23,7 @@ gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'simple_form'
 gem 'therubyracer'
-gem 'turbolinks'
+gem 'turbolinks', github: 'rails/turbolinks'
 gem 'unf'
 gem 'yelpster', github: 'nvd/yelpster'
 

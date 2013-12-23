@@ -18,7 +18,7 @@ function tagRefresh(e) {
     });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
-    $('table.tags a').on('click', function(e) {
+    $('table.tags.refresh a').on('click', function(e) {
       e.preventDefault();
       tagRefresh(e);
     });
@@ -39,7 +39,7 @@ function showModal(event) {
                   });
                 });
               });
-              $('table.tags a').on('click', function(e) {
+              $('table.tags.refresh a').on('click', function(e) {
                 e.preventDefault();
                 tagRefresh(e);
               });
@@ -158,7 +158,7 @@ function readyUp() {
     $.modal(html);
     readyUp();
   }
-  $('table.tags a').on('click', function(e) {
+  $('table.tags.refresh a').on('click', function(e) {
     e.preventDefault();
     tagRefresh(e);
   });
