@@ -3,9 +3,9 @@
 <head>
   <title>Gustr</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ1M9CIeCufVkulo1zYFtJ-xZsYJD81sM&sensor=true&libraries=geometry,places" %>
   <%= javascript_include_tag :modernizr %>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ1M9CIeCufVkulo1zYFtJ-xZsYJD81sM&sensor=true&libraries=places" %>
   <%= javascript_include_tag "application"  %>
   <%= csrf_meta_tags %>
 </head><body><%= yield %></body></html>

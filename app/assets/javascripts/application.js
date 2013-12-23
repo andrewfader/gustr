@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.turbolinks
-//= require jquery.ui.all
+//= require turbolinks
 //= require gmaps-auto-complete
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree .

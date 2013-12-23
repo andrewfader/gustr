@@ -17,7 +17,8 @@ body, #map-canvas {
   display: block;
   margin: 0;
   padding: 0;
-  z-index: 1 !important; }
+  z-index: 1 !important;
+  display: table-cell; }
 
 #simplemodal-container {
   position: absolute !important;
@@ -82,6 +83,9 @@ table.tags {
       table.tags td a:visited {
         color: white; }
 
+.tag {
+  border: 1px solid black; }
+
 h1 {
   margin: 5px 0 5px 0; }
 
@@ -90,3 +94,15 @@ h2 {
 
 .simplemodal-close {
   float: right; }
+
+#toppanel {
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  color: black; }
+  #toppanel input {
+    margin-top: 10px;
+    width: 90%;
+    padding: 10px; }
+  #toppanel td a {
+    color: black; }
