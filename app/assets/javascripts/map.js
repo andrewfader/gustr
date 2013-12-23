@@ -116,7 +116,8 @@ function readyUp() {
         address = [ (place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || ''), (place.address_components[2] && place.address_components[2].short_name || '') ].join(' ');
       }
 
-      infowindow.setContent('<div><strong><a class="modalHere" onclick="showModal(\'/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '\')" href="#" data-no-turbolink="true">' + place.name + '</a></strong><br>' + address);
+      // infowindow.setContent('<div><strong><a class="modalHere" onclick="showModal(\'/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '\')" href="#" data-no-turbolink="true">' + place.name + '</a></strong><br>' + address);
+      infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
     });
   } else {
@@ -148,7 +149,8 @@ function filter(tag) {
             filtermarkers[findex].setVisible(true);
             var index = infowindows.length;
             infowindows[index] = new google.maps.InfoWindow();
-            infowindows[index].setContent('<div><strong><a class="modalHere" onclick="showModal(\'/places/show?name=' + k.name +'&address=' + k.address + '\'); return false;" href="#" data-no-turbolink="true">' + k.name + '</a></strong><br>' + k.address);
+            // infowindows[index].setContent('<div><strong><a class="modalHere" onclick="showModal(\'/places/show?name=' + k.name +'&address=' + k.address + '\'); return false;" href="#" data-no-turbolink="true">' + k.name + '</a></strong><br>' + k.address);
+            infowindows[index].setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
             infowindows[index].open(map, filtermarkers[findex]);
             autocomplete.bindTo('bounds', map);
           }
@@ -158,6 +160,6 @@ function filter(tag) {
   });
 }
 $(window).on('resize', function() { resizeBg(); });
-$(document).on('ready', function() { readyUp(); } )
+$(document).ready(function() { readyUp(); } )
 $(document).on('page:load', function() { readyUp(); } )
 // google.maps.event.addDomListener(window, 'load', readyUp);
