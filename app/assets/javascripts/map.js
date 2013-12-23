@@ -9,8 +9,7 @@ var geocoder = new google.maps.Geocoder();
 var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
 
 function tagRefresh(e) {
-  e.preventDefault();
-  link = $(e.target).attr('href');
+  var link = $(e.target).attr('href');
   $.get(link, function(data) {
     $(e.target).closest("table").parent().html(data);
     $('td .count').map(function(index, div) {
@@ -24,7 +23,6 @@ function tagRefresh(e) {
   });
 }
 function showModal(event) {
-  event.preventDefault();
   $.get($(event.target).attr('href'), function(data) {
     $.modal(data, {opacity: 50,
             autoPosition: true,
@@ -46,12 +44,11 @@ function showModal(event) {
 }
 
 function readyUp() {
-  var latlng;
   resizeBg();
   if ($('#map-canvas').length > 0) {
-    lati = $('#latlng #lat').text();
-    lngi = $('#latlng #long').text();
-    latlng = new google.maps.LatLng(lati, lngi);
+    var lati = $('#latlng #lat').text();
+    var lngi = $('#latlng #long').text();
+    var latlng = new google.maps.LatLng(lati, lngi);
     if ($('span.address').length === 0) {
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
