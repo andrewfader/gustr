@@ -3,22 +3,23 @@ function resizeBg() {
 }
 var map;
 var geocoder = new google.maps.Geocoder();
-var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>'
+var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
 
 var tagRefresh = function tagRefresh(e) {
   e.preventDefault();
   $.get($(e.originalEvent.toElement).attr('href'), function(data, response, xhr) {
     $($(e.originalEvent.toElement).closest("table").parent()).html(data);
     $('td .count').map(function(index, div) {
-      var width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
+      var width = ($($(div).parent()).width()/2) - $(div).width() - 5 + 'px';
       $(div).css('margin-left',width);
     });
-    $('table.tags a').on('click', function(e) { tagRefresh(e) });
+    $('table.tags a').on('click', function(e) {
+      tagRefresh(e);
+    });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
   });
-
-}
+};
 var showModal = function showModal(event) {
   event.preventDefault();
 
@@ -31,21 +32,22 @@ var showModal = function showModal(event) {
                 dialog.container.slideDown('slow', function() {
                   dialog.data.fadeIn('slow');
                   $('td .count').map(function(index, div) {
-                    var width = $(div).parent().width()/2 - $(div).width() - 5 + 'px';
-                    $(div).css('margin-left',width);
+                    var width = ($($(div).parent()).width()/2) - $(div).width() - 5 + 'px';
+                    $(div).css('margin-left', width);
                   });
-                  $('table.tags a').on('click', function(e) { tagRefresh(e) });
+                  $('table.tags a').on('click', function(e) {
+                    tagRefresh(e);
+                  });
                 });
               });
-            }}
-           );
+            }});
   });
-}
+};
 function readyUp() {
   if ($('#map-canvas').length > 0) {
     $(window).resize(resizeBg());
     resizeBg();
-    var mapOptions = {zoom: 13}
+    var mapOptions = {zoom: 13};
 
     if(navigator.geolocation) {
       if ($('span.address').length === 0) {
@@ -55,23 +57,23 @@ function readyUp() {
           var latlng = new google.maps.LatLng(lat, lng);
           if (map) {
             map.setCenter(latlng);
-          }
+          };
           var mapOptions = {
             center: latlng,
             zoom: 13
           };
         });
-      }
-    }
+      };
+    };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     if ($('span.address')) {
       geocoder.geocode( { 'address': $('span.address').text()}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           map.setCenter(results[0].geometry.location);
           map.setZoom(17);
-        }
+        };
       });
-    }
+    };
     if ($('#toppanel').length === 0) {
       $('body').append(toppanel);
     }
@@ -99,7 +101,7 @@ function readyUp() {
       var place = autocomplete.getPlace();
       if (!place.geometry) {
         return;
-      }
+      };
 
       if (place.geometry.viewport) {
         map.fitBounds(place.geometry.viewport);
@@ -107,7 +109,7 @@ function readyUp() {
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);  // Why 17? Because it looks good.
-      }
+      };
       marker.setIcon({
         url: place.icon,
         size: new google.maps.Size(71, 71),
@@ -125,7 +127,7 @@ function readyUp() {
           (place.address_components[1] && place.address_components[1].short_name || ''),
           (place.address_components[2] && place.address_components[2].short_name || '')
         ].join(' ');
-      }
+      };
 
       infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '" onClick="showModal(event)">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
@@ -136,7 +138,7 @@ function readyUp() {
           var marker = new google.maps.Marker({
             map: map
           });
-          geocoder.geocode( { 'address': k.address}, function(results, status) {
+          geocoder.geocode( {'address': k.address}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               marker.setVisible(true);
               marker.setPosition(results[0].geometry.location);
@@ -144,11 +146,11 @@ function readyUp() {
               var infowindow = new google.maps.InfoWindow();
               infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '" onClick="showModal(event)">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
-            }
+            };
           });
         });
       });
-    }
+    };
   }
   else {
     var html = $('body').html();
@@ -156,14 +158,15 @@ function readyUp() {
     $.modal(html);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-    // $('.simplemodal-close').on('click', function(e) { e.preventDefault();  $.modal.close();});
-  }
+  };
   if ($('#toppanel').length === 0) {
     $('body').append(toppanel);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-  }
-}
+  };
+};
 
-$(document).bind('page:load', function() { readyUp() });
-$(document).ready(function() { readyUp() });
+$(document).ready(function() {
+  readyUp();
+});
+google.maps.event.addDomListener(window, 'load', readyUp);
