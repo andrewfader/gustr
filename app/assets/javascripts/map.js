@@ -8,7 +8,7 @@ var map;
 var geocoder = new google.maps.Geocoder();
 var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
 
-var tagRefresh = function tagRefresh(e) {
+function tagRefresh(e) {
   e.preventDefault();
   $.get($(e.originalEvent.toElement).attr('href'), function(data, response, xhr) {
     $($(e.originalEvent.toElement).closest("table").parent()).html(data);
@@ -23,7 +23,7 @@ var tagRefresh = function tagRefresh(e) {
     $(window).trigger('resize.simplemodal');
   });
 }
-var showModal = function showModal(event) {
+function showModal(event) {
   event.preventDefault();
 
   $.get($(event.toElement).attr('href'), function(data) {
@@ -154,16 +154,14 @@ function readyUp() {
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
     readyUp();
-    $('table.tags a').on('click', function(e) { tagRefresh(e) });
   }
   if ($('#toppanel').length === 0) {
     $('body').append(toppanel);
     readyUp();
-    $('table.tags a').on('click', function(e) { tagRefresh(e) });
   }
 }
 
 $(document).ready(function() {
   readyUp();
 });
-google.maps.event.addDomListener(window, 'load', readyUp);
+// google.maps.event.addDomListener(window, 'load', readyUp);
