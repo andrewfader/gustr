@@ -45,28 +45,24 @@ function showModal(event) {
   });
 }
 
-$(window).resize(resizeBg());
-
+var latlng;
 function readyUp() {
   resizeBg();
   if ($('#map-canvas').length > 0) {
-    var mapOptions = {zoom: 13};
-
-    if(navigator.geolocation) {
-      if ($('span.address').length === 0) {
+    if ($('span.address').length === 0) {
+      if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-          var lat = position.coords.latitude;
-          var lng = position.coords.longitude;
-          var latlng = new google.maps.LatLng(lat, lng);
-          if (map) {
-            map.setCenter(latlng);
-          }
-          var mapOptions = { center: latlng, zoom: 13 };
+          lati = position.coords.latitude;
+          lngi = position.coords.longitude;
+          latlng = new google.maps.LatLng(lati, lngi);
         });
       }
-    }
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    if ($('span.address').length !== 0) {
+      else {
+        lati = $('#latlng #lat').text();
+        lngi = $('#latlng #long').text();
+        latlng = new google.maps.LatLng(lati, lngi);
+      }
+    } else {
       geocoder.geocode( { 'address': $('span.address').text()}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           map.setCenter(results[0].geometry.location);
@@ -74,8 +70,12 @@ function readyUp() {
         }
       });
     }
-    if ($('#toppanel').length === 0) {
-      $('body').append(toppanel);
+    if (map) {
+      map.setCenter(latlng);
+    }
+    else {
+      var mapOptions = { center: latlng, zoom: 13 };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     }
     var input =/** @type {HTMLInputElement} */( document.getElementById('toppanel'));
 
@@ -126,7 +126,7 @@ function readyUp() {
         address = [ (place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || ''), (place.address_components[2] && place.address_components[2].short_name || '') ].join(' ');
       }
 
-      infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
+      infowindow.setContent('<div><strong><a onClick="showModal(event)" class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
     });
     if(document.location.href.indexOf("filter") != -1) {
@@ -141,16 +141,8 @@ function readyUp() {
               marker.setPosition(results[0].geometry.location);
               marker.setVisible(true);
               var infowindow = new google.maps.InfoWindow();
-              infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
+              infowindow.setContent('<div><strong><a onClick="showModal(event)" class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
-              $('a.modalHere').on('click', function(e) {
-                e.preventDefault();
-                showModal(e);
-                $('table.tags a').on('click', function(e) {
-                  e.preventDefault();
-                  tagRefresh(e);
-                });
-              });
             }
           });
         });
@@ -161,24 +153,12 @@ function readyUp() {
     var html = $('body').html();
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
-    $('table.tags a').on('click', function(e) {
-      e.preventDefault();
-      tagRefresh(e);
-    });
   }
   if ($('#toppanel').length === 0) {
     $('body').append(toppanel);
-    $('table.tags a').on('click', function(e) {
-      e.preventDefault();
-      tagRefresh(e);
-    });
   }
 }
-$('a.modalHere').on('click', function(e) {
-  e.preventDefault();
-  showModal(e);
-  $('table.tags a').on('click', function(e) { tagRefresh(e); });
-});
+$(window).on('resize', function() { resizeBg(); });
 $('table.tags a').on('click', function(e) { tagRefresh(e); });
 $(document).ready(function() { readyUp(); } )
 $(document).on('page:load', function() { readyUp(); } )
