@@ -1,5 +1,8 @@
 function resizeBg() {
-  $('#map-canvas').css('min-height',$(window).height());
+  $('#map-canvas').css('height',$(window).height());
+  $('#map-canvas').css('width',$(window).width());
+  $('body').css('height',$(window).height());
+  $('body').css('width',$(window).width());
 }
 var map;
 var geocoder = new google.maps.Geocoder();
@@ -120,11 +123,7 @@ function readyUp() {
 
       var address = '';
       if (place.address_components) {
-        address = [
-          (place.address_components[0] && place.address_components[0].short_name || ''),
-          (place.address_components[1] && place.address_components[1].short_name || ''),
-          (place.address_components[2] && place.address_components[2].short_name || '')
-        ].join(' ');
+        address = [ (place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || ''), (place.address_components[2] && place.address_components[2].short_name || '') ].join(' ');
       }
 
       infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '" onClick="showModal(event)">' + place.name + '</a></strong><br>' + address);
