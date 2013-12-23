@@ -19,7 +19,7 @@ var tagRefresh = function tagRefresh(e) {
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
   });
-};
+}
 var showModal = function showModal(event) {
   event.preventDefault();
 
@@ -42,7 +42,7 @@ var showModal = function showModal(event) {
               });
             }});
   });
-};
+}
 function readyUp() {
   if ($('#map-canvas').length > 0) {
     $(window).resize(resizeBg());
@@ -57,23 +57,20 @@ function readyUp() {
           var latlng = new google.maps.LatLng(lat, lng);
           if (map) {
             map.setCenter(latlng);
-          };
-          var mapOptions = {
-            center: latlng,
-            zoom: 13
-          };
+          }
+          var mapOptions = { center: latlng, zoom: 13 };
         });
-      };
-    };
+      }
+    }
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    if ($('span.address')) {
+    if ($('span.address').length !== 0) {
       geocoder.geocode( { 'address': $('span.address').text()}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           map.setCenter(results[0].geometry.location);
           map.setZoom(17);
-        };
+        }
       });
-    };
+    }
     if ($('#toppanel').length === 0) {
       $('body').append(toppanel);
     }
@@ -101,7 +98,7 @@ function readyUp() {
       var place = autocomplete.getPlace();
       if (!place.geometry) {
         return;
-      };
+      }
 
       if (place.geometry.viewport) {
         map.fitBounds(place.geometry.viewport);
@@ -109,7 +106,7 @@ function readyUp() {
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);  // Why 17? Because it looks good.
-      };
+      }
       marker.setIcon({
         url: place.icon,
         size: new google.maps.Size(71, 71),
@@ -127,7 +124,7 @@ function readyUp() {
           (place.address_components[1] && place.address_components[1].short_name || ''),
           (place.address_components[2] && place.address_components[2].short_name || '')
         ].join(' ');
-      };
+      }
 
       infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + place.name.replace('&','and') +'&address=' + address + '" onClick="showModal(event)">' + place.name + '</a></strong><br>' + address);
       infowindow.open(map, marker);
@@ -146,11 +143,11 @@ function readyUp() {
               var infowindow = new google.maps.InfoWindow();
               infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '" onClick="showModal(event)">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
-            };
+            }
           });
         });
       });
-    };
+    }
   }
   else {
     var html = $('body').html();
@@ -158,13 +155,13 @@ function readyUp() {
     $.modal(html);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-  };
+  }
   if ($('#toppanel').length === 0) {
     $('body').append(toppanel);
     readyUp();
     $('table.tags a').on('click', function(e) { tagRefresh(e) });
-  };
-};
+  }
+}
 
 $(document).ready(function() {
   readyUp();
