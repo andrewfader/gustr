@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'carrierwave'
+gem 'uglifier'
 gem 'certified'
 gem 'devise'
 gem 'fog'
