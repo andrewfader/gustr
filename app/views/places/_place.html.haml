@@ -8,7 +8,7 @@
       %h2 Gustr
     - Tag::TAGS.each do |tag|
       %td{class: @place.tags.send(tag.underscore).present? ? 'green' : 'gray'}
-        = link_to tag, place_tag_path(@place, tag: tag.underscore)
+        = link_to tag, place_tag_path(@place, tag: tag.underscore), {'data-no-turbolink' => true}
         .count
           #{@place.tags.send(tag.underscore).count}
 %hr
@@ -24,7 +24,7 @@
   %tr
     - Tag::TAGS.each do |tag|
       %td{class: @place.tagged_by(@ip, tag.underscore) ? 'green' : 'gray'}
-        = link_to tag, place_tag_path(@place, tag: tag.underscore)
+        = link_to tag, place_tag_path(@place, tag: tag.underscore), {'data-no-turbolink' => true}
 
 -@place.tags.each do |tag|
   .tag
