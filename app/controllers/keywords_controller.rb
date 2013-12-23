@@ -1,3 +1,3 @@
 class KeywordsController < ApplicationController
-  autocomplete :keyword, :name
+  # autocomplete :keyword, :name
 end
