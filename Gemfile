@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-# gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
+gem 'modernizr-rails'
 gem 'omniauth'
 gem 'certified'
 gem 'omniauth-facebook'
