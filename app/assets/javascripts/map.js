@@ -9,8 +9,10 @@ var geocoder = new google.maps.Geocoder();
 var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
 
 function tagRefresh(e) {
-  $.get($(e.toElement).attr('href'), function(data) {
-    $($(e.toElement).closest("table").parent()).html(data);
+  e.preventDefault();
+  link = $(e.target).attr('href');
+  $.get(link, function(data) {
+    $(e.target).closest("table").parent().html(data);
     $('td .count').map(function(index, div) {
       var width = ($($(div).parent()).width()/2) - $(div).width() - 5 + 'px';
       $(div).css('margin-left',width);
@@ -24,7 +26,8 @@ function tagRefresh(e) {
   });
 }
 function showModal(event) {
-  $.get($(event.toElement).attr('href'), function(data) {
+  event.preventDefault();
+  $.get($(event.target).attr('href'), function(data) {
     $.modal(data, {opacity: 50,
             autoPosition: true,
             position: '0 50%',
@@ -39,20 +42,14 @@ function showModal(event) {
                 });
               });
             }});
-            $('table.tags a').on('click', function(e) {
-              e.preventDefault();
-              tagRefresh(e);
-            });
-  });
-  $('table.tags a').on('click', function(e) {
-    e.preventDefault();
-    tagRefresh(e);
   });
 }
+
+$(window).resize(resizeBg());
+
 function readyUp() {
+  resizeBg();
   if ($('#map-canvas').length > 0) {
-    $(window).resize(resizeBg());
-    resizeBg();
     var mapOptions = {zoom: 13};
 
     if(navigator.geolocation) {
@@ -164,7 +161,6 @@ function readyUp() {
     var html = $('body').html();
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
-    readyUp();
     $('table.tags a').on('click', function(e) {
       e.preventDefault();
       tagRefresh(e);
@@ -172,7 +168,6 @@ function readyUp() {
   }
   if ($('#toppanel').length === 0) {
     $('body').append(toppanel);
-    readyUp();
     $('table.tags a').on('click', function(e) {
       e.preventDefault();
       tagRefresh(e);
@@ -182,15 +177,9 @@ function readyUp() {
 $('a.modalHere').on('click', function(e) {
   e.preventDefault();
   showModal(e);
-  $('table.tags a').on('click', function(e) {
-    e.preventDefault();
-    tagRefresh(e);
-  });
+  $('table.tags a').on('click', function(e) { tagRefresh(e); });
 });
-$('table.tags a').on('click', function(e) {
-  e.preventDefault();
-  tagRefresh(e);
-});
+$('table.tags a').on('click', function(e) { tagRefresh(e); });
 $(document).ready(function() { readyUp(); } )
 $(document).on('page:load', function() { readyUp(); } )
 google.maps.event.addDomListener(window, 'load', readyUp);
