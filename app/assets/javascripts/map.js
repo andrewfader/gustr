@@ -7,7 +7,7 @@ function resizeBg() {
 var map;
 var autocomplete;
 var geocoder = new google.maps.Geocoder();
-var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
+var toppanel = '<div style="z-index: 0; position: absolute; top: 0px; left: 650px;" id="toppanel"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a data-no-turbolink="true" href="#" onclick="filter(\'organic\'); return false;">Organic</a> </td> <td> <a data-no-turbolink="true" href="#" onclick="filter(\'grass fed\'); return false;">Grass Fed</a> </td> <td> <a data-no-turbolink="true" href="#" onclick="filter(\'locally sourced\'); return false;">Locally Sourced</a> </td> <td> <a data-no-turbolink="true" href="#" onclick="filter(\'vegetarian\'); return false;">Vegetarian</a> </td> </tr> </tbody></table> <input autocomplete="off" class="controls" id="pac-input" placeholder="Enter business name" type="text"> </div>';
 
 function tagRefresh(url) {
   $.get(url, function(data) {
