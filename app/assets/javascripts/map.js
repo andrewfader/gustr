@@ -9,7 +9,7 @@ var geocoder = new google.maps.Geocoder();
 var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
 
 function tagRefresh(e) {
-  $.get($(e.toElement).attr('href'), function(data, response, xhr) {
+  $.get($(e.toElement).attr('href'), function(data) {
     $($(e.toElement).closest("table").parent()).html(data);
     $('td .count').map(function(index, div) {
       var width = ($($(div).parent()).width()/2) - $(div).width() - 5 + 'px';
@@ -17,6 +17,10 @@ function tagRefresh(e) {
     });
     $("#simplemodal-container").css('height', 'auto');
     $(window).trigger('resize.simplemodal');
+    $('table.tags a').on('click', function(e) {
+      e.preventDefault();
+      tagRefresh(e);
+    });
   });
 }
 function showModal(event) {
@@ -34,11 +38,15 @@ function showModal(event) {
                   });
                 });
               });
-              $('table.tags a').on('click', function(e) {
-                e.preventDefault();
-                tagRefresh(e);
-              });
             }});
+            $('table.tags a').on('click', function(e) {
+              e.preventDefault();
+              tagRefresh(e);
+            });
+  });
+  $('table.tags a').on('click', function(e) {
+    e.preventDefault();
+    tagRefresh(e);
   });
 }
 function readyUp() {
