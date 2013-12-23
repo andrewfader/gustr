@@ -130,7 +130,11 @@ function readyUp() {
     readyUp();
   }
 }
+var infowindows = new Array();
 function filter(tag) {
+  $(infowindows).each(function(a, w) {
+    w.close();
+  });
   $.get('/places?filter=' + tag , function(e) {
     $(e).each(function (j, k) {
       var marker = new google.maps.Marker({
@@ -142,9 +146,10 @@ function filter(tag) {
             marker.setVisible(true);
             marker.setPosition(results[0].geometry.location);
             marker.setVisible(true);
-            var infowindow = new google.maps.InfoWindow();
-            infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
-            infowindow.open(map, marker);
+            index = infowindows.length;
+            infowindows[index] = new google.maps.InfoWindow();
+            infowindows[index].setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
+            infowindows[index].open(map, marker);
             autocomplete.bindTo('bounds', map);
             // $('a.modalHere').on('click', function(e) {
             // e.preventDefault();
