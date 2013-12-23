@@ -9,9 +9,8 @@ var geocoder = new google.maps.Geocoder();
 var toppanel = '<div id="toppanel" style="z-index: 0; position: absolute; top: 0px; left: 303px;"> <h1>Gustr</h1> <table class="tags topbar"> <tbody><tr> <td> <a href="#">Organic</a> </td> <td> <a href="#">Grass Fed</a> </td> <td> <a href="#">Locally Sourced</a> </td> <td> <a href="#">Vegetarian</a> </td> </tr> </tbody></table> <input class="controls" id="pac-input" placeholder="Enter a location" type="text" autocomplete="off"> </div>';
 
 function tagRefresh(e) {
-  e.preventDefault();
-  $.get($(e.originalEvent.toElement).attr('href'), function(data, response, xhr) {
-    $($(e.originalEvent.toElement).closest("table").parent()).html(data);
+  $.get($(e.toElement).attr('href'), function(data, response, xhr) {
+    $($(e.toElement).closest("table").parent()).html(data);
     $('td .count').map(function(index, div) {
       var width = ($($(div).parent()).width()/2) - $(div).width() - 5 + 'px';
       $(div).css('margin-left',width);
@@ -21,8 +20,6 @@ function tagRefresh(e) {
   });
 }
 function showModal(event) {
-  event.preventDefault();
-
   $.get($(event.toElement).attr('href'), function(data) {
     $.modal(data, {opacity: 50,
             autoPosition: true,
@@ -36,6 +33,10 @@ function showModal(event) {
                     $(div).css('margin-left', width);
                   });
                 });
+              });
+              $('table.tags a').on('click', function(e) {
+                e.preventDefault();
+                tagRefresh(e);
               });
             }});
   });
@@ -137,6 +138,14 @@ function readyUp() {
               var infowindow = new google.maps.InfoWindow();
               infowindow.setContent('<div><strong><a class="modalHere" href="/places/show?name=' + k.name +'&address=' + k.address + '">' + k.name + '</a></strong><br>' + k.address);
               infowindow.open(map, marker);
+              $('a.modalHere').on('click', function(e) {
+                e.preventDefault();
+                showModal(e);
+                $('table.tags a').on('click', function(e) {
+                  e.preventDefault();
+                  tagRefresh(e);
+                });
+              });
             }
           });
         });
@@ -148,15 +157,27 @@ function readyUp() {
     $('body').html(toppanel + '<div id="map-canvas"></div>');
     $.modal(html);
     readyUp();
+    $('table.tags a').on('click', function(e) {
+      e.preventDefault();
+      tagRefresh(e);
+    });
   }
   if ($('#toppanel').length === 0) {
     $('body').append(toppanel);
     readyUp();
+    $('table.tags a').on('click', function(e) {
+      e.preventDefault();
+      tagRefresh(e);
+    });
   }
 }
 $('a.modalHere').on('click', function(e) {
   e.preventDefault();
-  showModal();
+  showModal(e);
+  $('table.tags a').on('click', function(e) {
+    e.preventDefault();
+    tagRefresh(e);
+  });
 });
 $('table.tags a').on('click', function(e) {
   e.preventDefault();
