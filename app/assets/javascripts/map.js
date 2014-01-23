@@ -1,6 +1,8 @@
 function resizeBg() {
-  $('#map-canvas').css('height',$(window).height());
-  $('#map-canvas').css('width',$(window).width());
+  if ($('#map-canvas').length > 0) {
+    $('#map-canvas').css('height',$(window).height());
+    $('#map-canvas').css('width',$(window).width());
+  }
   $('body').css('height',$(window).height());
   $('body').css('width',$(window).width());
 }
@@ -121,10 +123,10 @@ function readyUp() {
       infowindow.open(map, marker);
     });
   } else {
-    var html = $('body').html();
-    $('body').html(toppanel + '<div id="map-canvas"></div>');
-    $.modal(html);
-    readyUp();
+    // var html = $('body').html();
+    // $('body').html(toppanel + '<div id="map-canvas"></div>');
+    // $.modal(html);
+    // readyUp();
   }
 }
 var infowindows = new Array();
