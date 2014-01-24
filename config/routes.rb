@@ -11,4 +11,7 @@ Gustr::Application.routes.draw do
     get :tag
     resources :graphics
   end
+  resources :stories do
+    get :wizard
+  end
 end

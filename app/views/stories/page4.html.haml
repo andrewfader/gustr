@@ -1,0 +1,6 @@
+=render 'progress', num: 4
+=simple_form_for @story do |f|
+  What's the nifty or thrifty of it?
+  = f.input :step, as: :hidden, input_html: { value: 5 }
+  = f.input :nifty, label: false
+  = f.submit "Next"

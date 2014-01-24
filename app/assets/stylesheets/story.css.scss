@@ -25,11 +25,15 @@ body {
   #icon {
     width: 60px;
   }
-  #searchbox {
+  #addstory,#stories,#link {
+    color: white;
+    font-weight: bold;
+  }
+  #addstory {
     width: 120px;
     background-color: green;
   }
-  #right {
+  #stories {
     width: 120px;
     background-color: gray;
   }
@@ -46,6 +50,10 @@ body {
   ul#buttons {
     margin-top: 50px;
     li {
+      a {
+        text-decoration: none;
+        color: black;
+      }
       text-align: center;
       font-weight: bold;
       font-size: 25px;
@@ -63,4 +71,18 @@ body {
   }
   margin: auto;
   text-align: center;
+}
+table.progress {
+  margin: auto;
+  padding: 0;
+  td.green {
+    background-color: green
+  }
+  td {
+    width: 80px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+  }
 }

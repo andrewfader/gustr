@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222022417) do
+ActiveRecord::Schema.define(version: 20140123071758) do
 
   create_table "businesses", force: true do |t|
     t.string   "name"
@@ -45,6 +45,25 @@ ActiveRecord::Schema.define(version: 20131222022417) do
     t.datetime "updated_at"
     t.string   "address"
     t.string   "star_rating"
+  end
+
+  create_table "stories", force: true do |t|
+    t.string   "title"
+    t.string   "genre"
+    t.string   "storybook"
+    t.string   "tags"
+    t.string   "place_name"
+    t.string   "city"
+    t.string   "time1"
+    t.string   "time2"
+    t.text     "why"
+    t.text     "adventure"
+    t.text     "nifty"
+    t.text     "wise"
+    t.string   "mom"
+    t.integer  "step"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|

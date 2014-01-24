@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title Gustr
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ1M9CIeCufVkulo1zYFtJ-xZsYJD81sM&sensor=true&libraries=geometry,places"
+    = javascript_include_tag :modernizr
+    %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}/
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+  %table#topbar{cellpadding: 0, cellspacing: 0}
+    %td#left
+      %span Settings
+    %td#logo
+      %span Gustr
+    %td#icon
+      %span search
+    %td#stories.hover
+      %span Stories
+    %td#addstory
+      %span Add Story
+    %td#link.hover
+      %span Map
+  #content
+    = yield

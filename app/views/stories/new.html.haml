@@ -1,0 +1,5 @@
+Give your Storybook a title.
+=simple_form_for @story do |f|
+  =f.input :title
+  =f.input :genre, as: :hidden, input_html: {value: @genre}
+  =f.submit "Next"
