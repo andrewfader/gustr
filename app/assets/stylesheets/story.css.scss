@@ -5,6 +5,7 @@ body {
   margin: 0 auto;
   padding: 0;
   td {
+    a { display: block; }
     margin: 0 auto;
     border: 1px black solid;
     height: 60px;
@@ -51,13 +52,15 @@ body {
     margin-top: 50px;
     li {
       a {
+        margin: 0;
+        padding: 10px;
+        display: block;
         text-decoration: none;
         color: black;
       }
       text-align: center;
       font-weight: bold;
       font-size: 25px;
-      padding: 10px;
       margin: 10px auto;
       width: 500px;
       border: 1px black solid;

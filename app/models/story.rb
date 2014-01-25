@@ -1,3 +1,3 @@
 class Story < ActiveRecord::Base
-  GENRES = ["Eating Out","Date Night","Travel","Health & Wellness","Kid Adventure"]
+  GENRES = ["Eating Out","Date Night","Events & Celebrations", "Travel","Health & Wellness","Kid Adventure"]
 end
