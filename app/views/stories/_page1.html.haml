@@ -1,0 +1,7 @@
+Where did you go?
+= f.input :place_name
+City
+= f.input :city
+When did you go?
+= f.input :time1, as: :select, collection: ["Breakfast","Lunch","Dinner"], label: false
+= f.input :time2, as: :select, collection: ["Weekday","Weekend"], label: false

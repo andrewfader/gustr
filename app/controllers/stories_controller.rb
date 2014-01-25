@@ -11,7 +11,12 @@ class StoriesController < InheritedResources::Base
   end
   def wizard
     @story = Story.find(params[:story_id])
-    render "stories/page#{params[:page]}"
+    @n = @story.step
+    unless @story.step == 6
+      render "stories/page"
+    else
+      redirect_to "/"
+    end
   end
 
   def permitted_params
