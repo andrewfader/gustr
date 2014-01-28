@@ -1,4 +1,5 @@
-=render 'progress', num: @n
+- unless @n == 6
+  =render 'progress', num: (@n + 1)
 =simple_form_for @story do |f|
   = f.input :step, as: :hidden, input_html: { value: @n + 1 }
   = render "page#{@n + 1}", f: f, num: @n

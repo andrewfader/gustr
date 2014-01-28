@@ -135,6 +135,8 @@ GEM
     jquery-turbolinks (2.0.1)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (4.1.1)
+      railties (>= 3.1.0)
     jshint_on_rails (1.0.3)
     json (1.8.1)
     jwt (0.1.11)
@@ -289,6 +291,7 @@ DEPENDENCIES
   jazz_hands
   jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   jshint_on_rails
   mini_magick
   modernizr-rails

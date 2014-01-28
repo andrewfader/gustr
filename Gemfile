@@ -10,6 +10,7 @@ gem 'gmaps-autocomplete-rails', github: 'kristianmandrup/gmaps-autocomplete-rail
 gem 'haml'
 gem 'inherited_resources'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'jshint_on_rails'
 gem 'mini_magick'

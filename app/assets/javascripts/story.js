@@ -12,6 +12,17 @@ function storyUp() {
   function() {
     $(this).css('background-color','gray');
   });
+  var completer;
+
+  completer = new GmapsCompleter({
+    inputField: '#story_place_name',
+    mapElem: 'null'
+  });
+
+  completer.autoCompleteInit({
+    country: "USA",
+    region: "US"
+  });
 }
 $(document).ready(function() { storyUp(); } )
 $(document).on('page:load', function() { storyUp(); } )
