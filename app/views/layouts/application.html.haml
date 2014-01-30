@@ -20,7 +20,7 @@
     %td#stories.hover
       %span= link_to "Stories", stories_path
     %td#addstory
-      %span Add Story
+      %span= link_to "Add Story", new_story_path
     %td#link.hover
       - unless current_user
         %span=link_to "Sign in", new_user_session_path
