@@ -1,0 +1,3 @@
+%ul#buttons
+  - Story.all.each do |story|
+    %li= link_to story.title, story_path(story)

@@ -15,7 +15,7 @@ class StoriesController < InheritedResources::Base
     unless @story.step == 6
       render "stories/page"
     else
-      redirect_to "/"
+      redirect_to story_path(@story)
     end
   end
 

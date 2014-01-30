@@ -1,0 +1,4 @@
+=simple_form_for @story do |f|
+  -5.times do |i|
+    =render "page#{i + 1}", f: f
+  =f.submit
