@@ -7,7 +7,7 @@
 %ul#linkbuttons
   - Story.all.each do |story|
     .left
-      = story.graphics.first.upload.thumb.url if story.graphics.present?
+      = image_tag(story.graphics.first.upload.thumb.url) if story.graphics.present?
     .right
       = story.storybook
       %br
