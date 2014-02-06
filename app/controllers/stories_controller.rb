@@ -17,9 +17,6 @@ class StoriesController < InheritedResources::Base
 
   def wizard
     @story = Story.find(params[:story_id])
-    if @genre = params[:genre]
-      @story.update_attributes(genre: @genre)
-    end
     @n = @story.step || 0
     unless @story.step == 6
       render "stories/page"

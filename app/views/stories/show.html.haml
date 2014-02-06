@@ -1,23 +1,28 @@
-=link_to "Edit story", edit_story_path(@story)
-.genre Genre: #{@story.genre}
-.title Story Title: #{@story.title}
-.city City: #{@story.city}
-%hr
-.time1=@story.time1.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
-.time1=@story.time2.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
-%hr
-Why did you go?
+.genre
+  %h2 Genre: #{@story.genre}
+  %h2 Storybook:
+.images
+
+.tags
+  %h2 Tags
+
+.title
+  %h2 Chapter Title: #{@story.title}
+.citytime
+  #{@story.city}
+  %br
+  =@story.time1.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
+  %br
+  =@story.time2.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
+%h2 Why did you go?
 .why=@story.why
-%hr
-What adventure did you choose?
+%h2 What adventure did you choose?
 .adventure=@story.adventure
-%hr
-What's the nifty or thrifty of it?
+%h2 What's the nifty or thrifty of it?
 .nifty=@story.nifty
-%hr
-Word to the wise!
+%h2 Word to the wise!
 .wise=@story.wise
-%hr
-Would you take your mom?
+%h2 Would you take your mom?
 .mom=@story.mom.try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
-%hr
+.buttons
+  =link_to "Edit story", edit_story_path(@story), class: 'button'
