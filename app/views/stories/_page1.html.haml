@@ -1,7 +1,6 @@
-Where did you go?
-= f.input :place_name
-City
-= f.input :city
-When did you go?
-= f.input :time1, as: :check_boxes, collection: ["Breakfast","Lunch","Dinner"], label: false
-= f.input :time2, as: :check_boxes, collection: ["Weekday","Weekend"], label: false
+Give your Storybook a title.
+= f.input :step, as: :hidden, input_html: { value: 1 }
+=f.input :title, label: false, placeholder: "Storybook title examples: Irish Bars, Chinese Restaurants, Cupcake Shops, etc."
+=f.input :genre, as: :hidden, input_html: {value: @genre}
+- if current_user
+  =f.input :user_id, as: :hidden, input_html: {value: current_user.id}

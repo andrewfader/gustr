@@ -1,6 +1,8 @@
-- unless @n == 6
+- unless @n == 7
   =render 'progress', num: (@n + 1)
 =simple_form_for @story do |f|
   = f.input :step, as: :hidden, input_html: { value: @n + 1 }
   = render "page#{@n + 1}", f: f, num: @n
-  = f.submit "Next"
+  =link_to "Back","#", class: 'button back'
+  =link_to "Cancel","/", class: 'button'
+  =f.submit "Next", class: 'button'

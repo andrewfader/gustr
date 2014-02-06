@@ -1,5 +1,5 @@
 class Tag < ActiveRecord::Base
-  belongs_to :place
+  belongs_to :story
   belongs_to :user
   TAGS = ["Organic","Grass Fed", "Locally Sourced","Vegetarian"]
   TAGS.each do |tag|

@@ -1,2 +1,7 @@
-Why did you go?
-= f.input :why, label: false
+Where did you go?
+= f.input :place_name
+City
+= f.input :city
+When did you go?
+= f.input :time1, as: :check_boxes, collection: ["Breakfast","Lunch","Dinner"], label: false
+= f.input :time2, as: :check_boxes, collection: ["Weekday","Weekend"], label: false

@@ -1,9 +1,10 @@
+=link_to "Edit story", edit_story_path(@story)
 .genre Genre: #{@story.genre}
 .title Story Title: #{@story.title}
 .city City: #{@story.city}
 %hr
-.time1=@story.time1
-.time2=@story.time2
+.time1=@story.time1.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
+.time1=@story.time2.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
 %hr
 Why did you go?
 .why=@story.why
@@ -18,5 +19,5 @@ Word to the wise!
 .wise=@story.wise
 %hr
 Would you take your mom?
-.mom=@story.mom
+.mom=@story.mom.try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
 %hr

@@ -1,8 +1,15 @@
-Give your Storybook a title.
-=simple_form_for @story do |f|
-  = f.input :step, as: :hidden, input_html: { value: 0 }
-  =f.input :title
-  =f.input :genre, as: :hidden, input_html: {value: @genre}
-  - if current_user
-    =f.input :user_id, as: :hidden, input_html: {value: current_user.id}
-  =f.submit "Next"
+%ul#buttons
+  .intro
+    Welcome to Gustr.
+    %br
+    Select a genre and share your story.
+    -Story::GENRES.each do |genre|
+      = simple_form_for @story do |f|
+        =f.input :genre, as: :hidden, input_html: { value: genre }
+        %li=f.submit genre
+  %br
+  %br
+  %li=link_to "Quick Story", edit_story_path(@story)
+%hr
+#footer
+=link_to "Legal Terms"
