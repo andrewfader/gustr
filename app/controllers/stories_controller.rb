@@ -8,7 +8,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def update
-    if params["story"]["title"].present? && params["story"]["nifty"].present?
+    if params["story"]["title"] && params["story"]["nifty"]
       super { story_path(@story) }
     else
       super { story_wizard_path(@story, page: @story.step) }
@@ -25,8 +25,20 @@ class StoriesController < InheritedResources::Base
     end
   end
 
+  def tag
+    @ip = request.ip
+    @story = Story.find(params[:story_id])
+    tag = Tag.where(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
+    if tag.present?
+      tag.first.destroy!
+    else
+      tag = Tag.create!(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
+    end
+    render :show
+  end
+
   def permitted_params
-    params.permit(story: [:title, :genre, :place_name, :city, {time1: []}, {time2: []}, :step, :why, :adventure, :nifty, :wise, {mom: []}])
+    params.permit(story: [:storybook, :title, :genre, :place_name, :city, {time1: []}, {time2: []}, :step, :why, :adventure, :nifty, :wise, {mom: []}])
   end
 
 end

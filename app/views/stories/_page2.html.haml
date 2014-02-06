@@ -1,7 +1,7 @@
 Where did you go?
-= f.input :place_name
+= f.input :place_name, placeholder: "name of the place or location for this chapter...", label: false
 City
-= f.input :city
+= f.input :city, placeholder: "enter a city...", label: false
 When did you go?
 = f.input :time1, as: :check_boxes, collection: ["Breakfast","Lunch","Dinner"], label: false
 = f.input :time2, as: :check_boxes, collection: ["Weekday","Weekend"], label: false

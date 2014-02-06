@@ -83,6 +83,9 @@ body {
   }
   ul#linkbuttons {
     margin-top: 50px;
+    .left,.right {
+      display: inline-block;
+    }
     li {
       a {
         margin: 0;
@@ -95,9 +98,11 @@ body {
       font-weight: bold;
       font-size: 25px;
       margin: 10px auto;
-      width: 500px;
       border: 1px black solid;
+      border-radius: 5px;
       display: block;
+      background-color: gray;
+      display: inline-block;
     }
   }
   #footer {
@@ -145,7 +150,14 @@ input.string, textarea {
   border: 1px solid black;
 }
 td a { display: block; }
-.citytime, .tags, .why, .adventure, .nifty, .wise, .mom {
+.citytime, .taglist, .why, .adventure, .nifty, .wise, .mom {
   padding: 20px;
   border-bottom: 1px black solid;
+}
+table.tags, .taglist {
+  margin: auto;
+}
+.tpborder {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }

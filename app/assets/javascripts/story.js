@@ -1,10 +1,14 @@
+function tagRefresh(url) {
+  $.get(url, function(data) {
+    $("html").html(data);
+  });
+}
 function storyUp() {
-
   $('ul#linkbuttons li, ul#buttons input').hover(function() {
     $(this).css('background-color','green');
   },
   function() {
-    $(this).css('background-color','white');
+    $(this).css('background-color','gray');
   });
   $('td.hover').hover(function() {
     $(this).css('background-color','green');
@@ -15,13 +19,13 @@ function storyUp() {
   var completer;
 
   // completer = new GmapsCompleter({
-    // inputField: '#story_place_name',
-    // mapElem: 'null'
+  // inputField: '#story_place_name',
+  // mapElem: 'null'
   // });
 
   // completer.autoCompleteInit({
-    // country: "USA",
-    // region: "US"
+  // country: "USA",
+  // region: "US"
   // });
   $('.button').button();
   $('.button.back').click(function(e) {
@@ -29,6 +33,7 @@ function storyUp() {
     e.stopPropagation();
     window.history.back();
   });
+
 }
 $(document).ready(function() { storyUp(); } )
 $(document).on('page:load', function() { storyUp(); } )

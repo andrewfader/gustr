@@ -14,7 +14,7 @@
     %td#left
       %span Settings
     %td#logo
-      %span Gustr
+      %span= link_to 'Gustr', '/'
     %td#icon
       %span search
     %td#stories.hover
@@ -25,5 +25,7 @@
       - unless current_user
         %span=link_to "Sign in", new_user_session_path
         %span=link_to "Sign up", new_user_registration_path
+      - else
+        %span=link_to "Log out", destroy_user_session_path
   #content
     = yield

@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'carrierwave/orm/activerecord'
-class PlaceUploader < CarrierWave::Uploader::Base
+class StoryUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   if Rails.env.development?

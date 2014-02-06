@@ -1,13 +1,28 @@
 .genre
   %h2 Genre: #{@story.genre}
-  %h2 Storybook:
+  %h2 Storybook: #{@story.storybook}
 .images
+- if @story.graphics.present?
+  %ul
+    -@story.graphics.each do |graphic|
+      %li
+        =image_tag(graphic.upload.thumb.url)
 
-.tags
+= simple_form_for [@story, @story.graphics.build] do |f|
+  = f.input :story_id, as: :hidden,input_html: {value: @story.id}
+  = f.input :upload
+  = f.submit
+
+.taglist
   %h2 Tags
-
+  %table.tags.refresh
+    - Tag::TAGS.in_groups_of(8).each do |group|
+      %tr
+      - group.compact.each do |tag|
+        %td{class: @story.tags.where(tag: tag.underscore).present? ? 'green' : 'gray'}
+          = link_to_function tag, "tagRefresh('#{story_tag_path(@story, tag: tag.underscore)}')", {'data-no-turbolink' => true}
 .title
-  %h2 Chapter Title: #{@story.title}
+  %h2 Chapter Title: #{@story.place_name}
 .citytime
   #{@story.city}
   %br

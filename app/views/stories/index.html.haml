@@ -1,3 +1,18 @@
+.images.tpborder
+  - if Graphic.count > 0
+    %ul
+      -Graphic.all.each do |graphic|
+        %li
+          =image_tag(graphic.upload.thumb.url)
 %ul#linkbuttons
   - Story.all.each do |story|
-    %li= link_to story.title, story_path(story)
+    .left
+      = story.graphics.first.upload.thumb.url if story.graphics.present?
+    .right
+      = story.storybook
+      %br
+      = story.place_name
+      %br
+      = story.city
+
+    %li= link_to 'Read story', story_path(story)
