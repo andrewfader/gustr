@@ -2,6 +2,7 @@ class Story < ActiveRecord::Base
   GENRES = ["Eating Out","Date Night","Events & Celebrations", "Travel","Health & Wellness","Kid Adventure"]
   has_many :graphics
   has_many :tags
+  belongs_to :user
   accepts_nested_attributes_for :graphics
   serialize :tags
   serialize :mom

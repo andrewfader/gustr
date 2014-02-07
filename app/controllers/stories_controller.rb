@@ -39,7 +39,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def permitted_params
-    params.permit(story: [:storybook, :title, :genre, :place_name, :city, {time1: []}, {time2: []}, :step, :why, :adventure, :nifty, :wise, {mom: []}])
+    params.permit(story: [:user_id, :storybook, :title, :genre, :place_name, :city, {time1: []}, {time2: []}, :step, :why, :adventure, :nifty, :wise, {mom: []}])
   end
 
 end

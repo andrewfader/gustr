@@ -3,3 +3,8 @@ Give your Storybook a title.
 =f.input :storybook, label: false, placeholder: "Storybook title examples: Irish Bars, Chinese Restaurants, Cupcake Shops, etc."
 - if current_user
   =f.input :user_id, as: :hidden, input_html: {value: current_user.id}
+#content
+  %h2 My Storybooks
+  %ul#buttons
+    -Story.where(user_id: current_user.id).map(&:storybook).compact.each do |sb|
+      %li.btn=link_to sb, '#'

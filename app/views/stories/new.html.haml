@@ -6,10 +6,11 @@
     -Story::GENRES.each do |genre|
       = simple_form_for @story do |f|
         =f.input :genre, as: :hidden, input_html: { value: genre }
+        =f.input :user_id, as: :hidden, input_html: { value: current_user.id }
         %li=f.submit genre
   %br
   %br
-  %li.btn=link_to "Quick Story", edit_story_path(Story.create)
+  %li.btn=link_to "Quick Story", edit_story_path(Story.create(user_id: current_user.id))
 %hr
 #footer
 =link_to "Legal Terms"
