@@ -26,9 +26,9 @@
 .citytime
   #{@story.city}
   %br
-  =@story.time1.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
+  =Array.wrap(@story.time1).try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
   %br
-  =@story.time2.try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
+  =Array.wrap(@story.time2).try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
 %h2 Why did you go?
 .why=@story.why
 %h2 What adventure did you choose?
@@ -38,6 +38,6 @@
 %h2 Word to the wise!
 .wise=@story.wise
 %h2 Would you take your mom?
-.mom=@story.mom.try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
+.mom=Array.wrap(@story.mom).try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
 .buttons
   =link_to "Edit story", edit_story_path(@story), class: 'button'
