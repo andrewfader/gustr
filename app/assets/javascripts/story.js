@@ -4,7 +4,13 @@ function tagRefresh(url) {
   });
 }
 function storyUp() {
-  $('ul#linkbuttons li, ul#buttons input').hover(function() {
+  $('ul#buttons input').hover(function() {
+    $(this).css('background-color','green');
+  },
+  function() {
+    $(this).css('background-color','white');
+  });
+  $('ul#linkbuttons li').hover(function() {
     $(this).css('background-color','green');
   },
   function() {

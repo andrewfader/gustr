@@ -65,7 +65,7 @@ body {
     li {
       margin: 5px;
     }
-    input {
+    input, li.btn {
       background-color: white;
       text-align: center;
       font-weight: bold;
@@ -79,6 +79,13 @@ body {
       display: block;
       text-decoration: none;
       color: black;
+      a {
+        margin: 0;
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+        color: black;
+      }
     }
   }
   ul#linkbuttons {
@@ -157,7 +164,18 @@ td a { display: block; }
 table.tags, .taglist {
   margin: auto;
 }
-.tpborder, p.story {
-  border-bottom: 1px solid black;
+.images.tpborder {
   border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 40%;
+  margin: auto;
+}
+p.story {
+  .left {
+    float: left;
+  }
+  li {
+    float: right;
+  }
+  border-bottom: 1px solid black;
 }
