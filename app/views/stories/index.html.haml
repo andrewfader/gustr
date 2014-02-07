@@ -6,13 +6,14 @@
           =image_tag(graphic.upload.thumb.url)
 %ul#linkbuttons
   - Story.all.each do |story|
-    .left
-      = image_tag(story.graphics.first.upload.thumb.url) if story.graphics.present?
-    .right
-      = story.storybook
-      %br
-      = story.place_name
-      %br
-      = story.city
+    %p.story
+      .left
+        = image_tag(story.graphics.first.upload.thumb.url) if story.graphics.present?
+      .right
+        = story.storybook
+        %br
+        = story.place_name
+        %br
+        = story.city
 
-    %li= link_to 'Read story', story_path(story)
+      %li= link_to 'Read story', story_path(story)
