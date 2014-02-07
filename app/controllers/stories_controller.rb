@@ -8,7 +8,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def update
-    if params["story"]["title"] && params["story"]["nifty"]
+    if params["story"].has_key?("city") && params["story"].has_key?("nifty")
       super { story_path(@story) }
     else
       super { story_wizard_path(@story, page: @story.step) }
