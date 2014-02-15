@@ -95,6 +95,7 @@ body {
   }
   ul#linkbuttons {
     background-color: white;
+    height: 160px;
     margin-top: 50px;
     margin-left: 0;
     padding-left: 5px;
@@ -105,9 +106,6 @@ body {
     color: black;
     text-shadow: 2px 2px 2px black;
     font-size: 22px;
-    .left,.right {
-      display: inline-block;
-    }
     li {
       a {
         margin: 0;
@@ -127,6 +125,7 @@ body {
       display: inline-block;
       margin-bottom: 0;
     }
+    text-align: left;
   }
   #footer {
     margin: auto;
@@ -205,16 +204,17 @@ table.tags, .taglist {
 p.story {
   margin: 0;
   padding: 0;
-  .left {
-    float: left;
-    margin: 0;
-    padding: 0;
-  }
-  .right {
-    margin: 10px;
-    padding: 10px;
-  }
   li {
-    float: right;
+    vertical-align: bottom;
   }
+}
+.left,.right {
+  display: inline-block;
+}
+.left {
+  margin: 0;
+  padding: 0;
+}
+.right {
+  vertical-align: top;
 }
