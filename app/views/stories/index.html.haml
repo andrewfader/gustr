@@ -1,4 +1,6 @@
-.images.tpborder
+.images
+  .header
+    Latest Story Photos
   %ul
     -Story.where('visible is true').map(&:graphics).flatten.last(4).each do |graphic|
       %li

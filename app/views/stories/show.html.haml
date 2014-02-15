@@ -2,19 +2,22 @@
   %h2 Genre: #{@story.genre}
   %h2 Storybook: #{@story.storybook}
 .images
-- if @story.graphics.present?
-  %ul
-    -@story.graphics.each do |graphic|
-      %li
-        =image_tag(graphic.upload.thumb.url)
+  .header
+    Story Photos
+  - if @story.graphics.present?
+    %ul
+      -@story.graphics.each do |graphic|
+        %li
+          =image_tag(graphic.upload.thumb.url)
 
 = simple_form_for [@story, @story.graphics.build] do |f|
   = f.input :story_id, as: :hidden,input_html: {value: @story.id}
   = f.input :upload
   = f.submit
 
-.taglist
-  %h2 Tags
+.taglist.images
+  .header
+    Hot Tags
   %table.tags.refresh
     - Tag::TAGS.in_groups_of(8).each do |group|
       %tr
