@@ -19,7 +19,7 @@ class StoriesController < InheritedResources::Base
   def publish
     story = Story.find(params[:story_id])
     story.update_attributes!(visible: true)
-    story
+    redirect_to story_path(story)
   end
 
   def wizard
