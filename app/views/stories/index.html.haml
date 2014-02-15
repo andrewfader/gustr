@@ -1,6 +1,6 @@
 .images.tpborder
   %ul
-    -Graphic.last(4).each do |graphic|
+    -Story.where('visible is true').map(&:graphic).last(4).each do |graphic|
       %li
         =image_tag(graphic.upload.thumb.url)
 %ul#linkbuttons
