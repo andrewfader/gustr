@@ -41,4 +41,4 @@
 .mom=Array.wrap(@story.mom).try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
 .buttons
   =link_to "Edit story", edit_story_path(@story), class: 'button'
-  =link_to "Publish story", publish_story_path(@story), class: 'button'
+  =link_to "Publish story", story_publish_path(@story), class: 'button'

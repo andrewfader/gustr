@@ -9,6 +9,7 @@ Gustr::Application.routes.draw do
   # end
   resources :stories do
     get :wizard
+    get :publish
     get :tag
     resources :graphics
   end
