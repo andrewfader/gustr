@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'cancan'
 gem 'carrierwave'
 gem 'uglifier'
 gem 'certified'

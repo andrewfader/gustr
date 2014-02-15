@@ -4,7 +4,7 @@
       %li
         =image_tag(graphic.upload.thumb.url)
 %ul#linkbuttons
-  - Story.where('storybook is not null').reverse.each do |story|
+  - Story.where('storybook is not null').where('visibility is true').reverse.each do |story|
     %p.story
       .left
         = image_tag(story.graphics.first.upload.thumb.url) if story.graphics.present?

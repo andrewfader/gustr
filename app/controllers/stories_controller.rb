@@ -16,6 +16,12 @@ class StoriesController < InheritedResources::Base
     end
   end
 
+  def publish
+    story = Story.find(params[:story_id])
+    story.update_attributes!(visibility: true)
+    story
+  end
+
   def wizard
     @story = Story.find(params[:story_id])
     @n = @story.step || 0
@@ -27,13 +33,15 @@ class StoriesController < InheritedResources::Base
   end
 
   def tag
-    @ip = request.ip
-    @story = Story.find(params[:story_id])
-    tag = Tag.where(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
-    if tag.present?
-      tag.first.destroy!
-    else
-      tag = Tag.create!(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
+    if current_user.id == story.user_id
+      @ip = request.ip
+      @story = Story.find(params[:story_id])
+      tag = Tag.where(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
+      if tag.present?
+        tag.first.destroy!
+      else
+        tag = Tag.create!(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
+      end
     end
     render :show
   end
