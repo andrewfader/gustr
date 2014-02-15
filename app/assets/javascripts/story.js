@@ -11,16 +11,16 @@ function storyUp() {
     $(this).css('background','#009900');
   });
   $('ul#linkbuttons li').hover(function() {
-    $(this).css('background-color','#009900');
+    $(this).css('background',"linear-gradient(#cde460,#78a139)");
   },
   function() {
-    $(this).css('background-color','gray');
+    $(this).css('background','#009900');
   });
   $('td.hover').hover(function() {
-    $(this).css('background-color','#009900');
+    $(this).css('background',"linear-gradient(#cde460,#78a139)");
   },
   function() {
-    $(this).css('background-color','gray');
+    $(this).css('background','gray');
   });
   var completer;
 
