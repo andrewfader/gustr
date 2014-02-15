@@ -5,10 +5,10 @@ function tagRefresh(url) {
 }
 function storyUp() {
   $('ul#buttons input').hover(function() {
-    $(this).css('background-color','green');
+    $(this).css('background',"linear-gradient('#cde460','#78a139')");
   },
   function() {
-    $(this).css('background-color','white');
+    $(this).css('background-color','green');
   });
   $('ul#linkbuttons li').hover(function() {
     $(this).css('background-color','green');

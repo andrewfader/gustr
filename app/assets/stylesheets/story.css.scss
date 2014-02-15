@@ -9,6 +9,8 @@ table#topbar {
 
 body {
   margin: auto;
+  background-color: #454140;
+  color: white;
 }
 #topbar {
   margin: 0 auto;
@@ -74,7 +76,7 @@ body {
       margin: 10px auto;
       width: 320px;
       height: 60px;
-      border: 1px black solid;
+      drop-shadow: 5px black;
       display: block;
       margin: 0;
       padding: 10px;
