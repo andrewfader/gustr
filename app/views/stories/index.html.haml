@@ -7,14 +7,9 @@
         =link_to image_tag(graphic.upload.thumb.url), story_path(graphic.story)
 
 - Story.where('storybook is not null').where('visible is true').reverse.each do |story|
-  %ul#linkbuttons
-    .left
-      = image_tag(story.graphics.first.upload.thumb.url) if story.graphics.present?
-    .right
-      %h3
-        = story.storybook
-      = story.place_name
-      %br
-      = story.city
+  = render story
 
-    %li=link_to 'Read story', story_path(story)
+- if (stories = Story.where('storybook is not null').where('visible is null')).present?
+  %h1 Drafts
+  - stories.each do |story|
+    = render story

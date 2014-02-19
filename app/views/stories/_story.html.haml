@@ -1,0 +1,12 @@
+%ul#linkbuttons
+  .left
+    = image_tag(story.graphics.first.upload.thumb.url) if story.graphics.present?
+  .right
+    %h3
+      = story.storybook
+    = story.place_name
+    %br
+    = story.city
+
+  %li=link_to 'Read story', story_path(story)
+
