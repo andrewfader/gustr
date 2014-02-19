@@ -12,9 +12,14 @@
   %body
   %table#topbar{cellpadding: 0, cellspacing: 0}
     %td#left
-      %span Settings
+      - unless current_user
+        %span=link_to image_tag('signin.jpg'), new_user_registration_path
+        %span=link_to image_tag('register.jpg'), new_user_session_path
+      - else
+        = image_tag current_user.image_url
+        %span=link_to "Log out", destroy_user_session_path
     %td#logo
-      %span= link_to 'Gustr', '/'
+      %span= link_to image_tag('logo.jpg'), '/'
     %td#icon
       %span search
     %td#stories.hover
@@ -22,11 +27,5 @@
     %td#addstory
       %span= link_to "Add Story", new_story_path
     %td#link.hover
-      - unless current_user
-        %span=link_to "Sign in", new_user_session_path
-        %span=link_to "Sign up", new_user_registration_path
-      - else
-        = image_tag current_user.image_url
-        %span=link_to "Log out", destroy_user_session_path
   #content
     = yield

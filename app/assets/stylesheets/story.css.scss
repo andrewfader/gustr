@@ -18,9 +18,10 @@ body {
   padding: 0;
   td {
     a { display: block; }
-    margin: 0 auto;
-    border: 1px black solid;
+    margin: 0;
+    padding: 0;
     height: 60px;
+    border: 0;
     text-align: center;
     span {
       margin: 0 auto;
@@ -29,11 +30,20 @@ body {
     }
   }
   #left {
+    padding: 0;
+    margin: 0;
+    span, img, a {
+      margin: 0;
+      padding: 0;
+      border-spacing: 0;
+    }
     width: 60px;
   }
   #logo {
     width: 200px;
     font-size: 35px;
+    margin: 0;
+    padding: 0;
   }
   #icon {
     width: 60px;
@@ -94,9 +104,22 @@ body {
     }
   }
   ul#linkbuttons {
+    .left,.right, li {
+      display: inline-block;
+    }
+    h3 {
+      font-weight: bold;
+    }
+    .left {
+      margin: 0;
+      padding: 0;
+      vertical-align: top;
+    }
+    margin-top: 50px;
+    vertical-align: top;
+    min-width: 680px;
     background-color: white;
     height: 160px;
-    margin-top: 50px;
     margin-left: 0;
     padding-left: 5px;
     padding-top: 5px;
@@ -104,7 +127,6 @@ body {
     padding-bottom: 0;
     border-radius: 10px;
     color: black;
-    text-shadow: 2px 2px 2px black;
     font-size: 22px;
     li {
       a {
@@ -114,16 +136,17 @@ body {
         text-decoration: none;
         color: white;
       }
+      float: right;
       text-align: center;
       font-weight: bold;
       font-size: 25px;
       margin: 10px auto;
-      display: block;
       background-color: #009900;
       border-radius: 10px;
       text-shadow: 3px 3px 3px black;
-      display: inline-block;
       margin-bottom: 0;
+      display: inline-block !important;
+      margin-top: 85px;
     }
     text-align: left;
   }
@@ -202,19 +225,4 @@ table.tags, .taglist {
   }
 }
 p.story {
-  margin: 0;
-  padding: 0;
-  li {
-    vertical-align: bottom;
-  }
-}
-.left,.right {
-  display: inline-block;
-}
-.left {
-  margin: 0;
-  padding: 0;
-}
-.right {
-  vertical-align: top;
 }
