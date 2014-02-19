@@ -23,7 +23,7 @@
       %tr
       - group.compact.each do |tag|
         %td{class: @story.tags.where(tag: tag.underscore).present? ? 'green' : 'gray'}
-          = link_to_function tag, "tagRefresh('#{story_tag_path(@story, tag: tag.underscore)}')", {'data-no-turbolink' => true}
+          = link_to tag, story_tag_path(@story, tag: tag.underscore)
 .title
   %h2 Chapter Title: #{@story.place_name}
 .citytime

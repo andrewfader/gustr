@@ -37,7 +37,8 @@ class StoriesController < InheritedResources::Base
   end
 
   def tag
-    if current_user.id == story.user_id
+    @story = Story.find(params[:story_id])
+    if current_user.id == @story.user_id
       @ip = request.ip
       @story = Story.find(params[:story_id])
       tag = Tag.where(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
@@ -46,8 +47,8 @@ class StoriesController < InheritedResources::Base
       else
         tag = Tag.create!(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
       end
+      render :show
     end
-    render :show
   end
 
   def permitted_params
