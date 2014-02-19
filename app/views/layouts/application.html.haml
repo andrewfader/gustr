@@ -20,11 +20,11 @@
         %span=link_to "Log out", destroy_user_session_path
     %td#logo
       %span= link_to image_tag('logo.jpg'), '/'
-    %td#icon
+    %td#icon.hover
       %span search
     %td#stories.hover
       %span= link_to "Stories", stories_path
-    %td#addstory
+    %td#addstory.hover
       %span= link_to "Add Story", new_story_path
     %td#link.hover
   #content
