@@ -1,4 +1,6 @@
 table#topbar {
+  margin: 0;
+  padding: 0;
   td {
     a {
       color: black;
@@ -14,26 +16,35 @@ body {
   width: 768px;
 }
 #topbar {
-  margin: 0 auto;
   padding: 0;
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
   td {
     a { display: block; }
-    margin: 0 auto;
-    border: 1px black solid;
-    height: 60px;
+    margin: 0;
+    padding: 0;
+    border: 3px gray;
+    border-style: outset;
+    border-spacing: 0;
     text-align: center;
     span {
-      margin: 0 auto;
-      vertical-align: middle;
-      padding-top: 20px;
+      margin: 0;
     }
   }
   #left {
-    width: 60px;
+    padding: 0;
+    margin: 0;
+    span, img, a {
+      margin: 0;
+      padding: 0;
+      border-spacing: 0;
+    }
   }
   #logo {
-    width: 200px;
-    font-size: 35px;
+    margin: 0;
+    padding: 0;
   }
   #icon {
     width: 60px;
@@ -65,9 +76,6 @@ body {
   }
   ul#buttons {
     margin-top: 50px;
-    li {
-      margin: 5px;
-    }
     input, li.btn {
       border-radius: 10px;
       background-color: #009900;
@@ -79,7 +87,6 @@ body {
       height: 60px;
       box-shadow: 5px black;
       display: block;
-      margin: 0;
       padding: 10px;
       display: block;
       text-decoration: none;
@@ -94,9 +101,22 @@ body {
     }
   }
   ul#linkbuttons {
+    .left,.right, li {
+      display: inline-block;
+    }
+    h3 {
+      font-weight: bold;
+    }
+    .left {
+      margin: 0;
+      padding: 0;
+      vertical-align: top;
+    }
+    margin-top: 50px;
+    vertical-align: top;
+    min-width: 680px;
     background-color: white;
     height: 160px;
-    margin-top: 50px;
     margin-left: 0;
     padding-left: 5px;
     padding-top: 5px;
@@ -104,7 +124,6 @@ body {
     padding-bottom: 0;
     border-radius: 10px;
     color: black;
-    text-shadow: 2px 2px 2px black;
     font-size: 22px;
     li {
       a {
@@ -114,16 +133,17 @@ body {
         text-decoration: none;
         color: white;
       }
+      float: right;
       text-align: center;
       font-weight: bold;
       font-size: 25px;
       margin: 10px auto;
-      display: block;
       background-color: #009900;
       border-radius: 10px;
       text-shadow: 3px 3px 3px black;
-      display: inline-block;
       margin-bottom: 0;
+      display: inline-block !important;
+      margin-top: 85px;
     }
     text-align: left;
   }
@@ -183,9 +203,10 @@ table.tags, .taglist {
   color: white;
   font-weight: bold;
   font-size: 19px;
-  text-shadow: 5px -4px 2px #053752;
+  text-shadow: 4px -4px 2px #053752;
   border-radius: 30px;
-  margin-top: -11px;
+  margin-top: -13px;
+  margin-left: 5px;
   position: absolute;
 }
 .images {
@@ -202,19 +223,4 @@ table.tags, .taglist {
   }
 }
 p.story {
-  margin: 0;
-  padding: 0;
-  li {
-    vertical-align: bottom;
-  }
-}
-.left,.right {
-  display: inline-block;
-}
-.left {
-  margin: 0;
-  padding: 0;
-}
-.right {
-  vertical-align: top;
 }
