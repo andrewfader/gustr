@@ -1,5 +1,5 @@
 class StoriesController < InheritedResources::Base
-  before_filter :authenticate_user!, only: :wizard
+  before_filter :authenticate_user!, only: [:wizard, :tag, :publish]
   def new
     @story = Story.new
   end
