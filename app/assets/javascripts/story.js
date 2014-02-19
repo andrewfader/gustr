@@ -20,7 +20,7 @@ function storyUp() {
     $(this).css('background',"linear-gradient(#cde460,#78a139)");
   },
   function() {
-    $(this).css('background','gray');
+    $(this).css('background','');
   });
   var completer;
 

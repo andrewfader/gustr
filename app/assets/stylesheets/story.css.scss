@@ -1,30 +1,30 @@
-table#topbar {
-  margin: 0;
-  padding: 0;
-  td {
-    a {
-      color: black;
-      text-decoration: none;
-    }
-  }
-}
-
 body {
   margin: auto;
+  padding: 0;
   background-color: #454140;
   color: white;
   width: 768px;
 }
 #topbar {
+  margin: auto !important;
   padding: 0;
   border-spacing: 0 !important;
   border-collapse: collapse;
+  background-image: image-url('/assets/images/screen.jpg');
+  min-width: 700px;
   td {
-    a { display: block; }
+    min-width: 70px;
+    overflow: hidden;
+    a {
+      text-decoration: none;
+      color: white;
+      height: 100%;
+      width: 100%;
+      margin: -10em;
+      padding: 10em;
+    }
     margin: 0;
     padding: 0;
-    border: 3px gray;
-    border-style: outset;
     border-spacing: 0;
     text-align: center;
     span {
@@ -33,16 +33,20 @@ body {
   }
   #left {
     padding: 0;
+    background-color: darkgray;
     margin: 0;
+    width: 68px;
     span, img, a {
       margin: 0;
       padding: 0;
       border-spacing: 0;
     }
   }
-  #logo {
+  #logo, #logo img {
     margin: 0;
     padding: 0;
+    width: 280px;
+    overflow: hidden;
   }
   #icon {
     width: 60px;
@@ -53,21 +57,19 @@ body {
   }
   #addstory {
     width: 120px;
-    background-color: gray;
   }
   #stories {
     width: 120px;
-    background-color: gray;
   }
   #link {
     width: 80px;
-    background-color: gray;
   }
 }
 #content {
   text-align: center;
   margin: auto;
   margin-top: 25px;
+  margin-right: 0;
   .intro {
     padding-bottom: 50px;
     text-align: left;

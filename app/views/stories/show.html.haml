@@ -1,6 +1,12 @@
 .genre
   %h2 Genre: #{@story.genre}
   %h2 Storybook: #{@story.storybook}
+.prevnext
+  - if (stories = Story.where('visible is true').where(storybook: @story.storybook).reject{|story|story.id ==@story.id}).count > 1
+    = link_to "Previous", stories.select { |story| story.id < @story.id }.last
+    = link_to "Next", stories.select { |story| story.id > @story.id }.first
+  - elsif stories.count == 1
+    = link_to "Next", stories.select { |story| story.id > @story.id }.first
 .images
   .header
     Story Photos
