@@ -1,5 +1,5 @@
 class Place < ActiveRecord::Base
-  include Yelp::V1::Review::Request
+  # include Yelp::V1::Review::Request
   has_many :graphics
   has_many :tags
   accepts_nested_attributes_for :graphics
@@ -12,7 +12,7 @@ class Place < ActiveRecord::Base
 
   def yelp
     unless @yelp
-      client = Yelp::Client.new
+      # client = Yelp::Client.new
       request = Location.new(term: self.name, address: self.address)
       @yelp = client.search(request)
     end

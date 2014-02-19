@@ -42,7 +42,7 @@
 .wise=@story.wise
 %h2 Would you take your mom?
 .mom=Array.wrap(@story.mom).try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
-- if @story.user_id == current_user.id
+- if current_user && @story.user_id == current_user.id
   .buttons
     =link_to "Edit story", edit_story_path(@story), class: 'button'
     =link_to "Publish story", story_publish_path(@story), class: 'button'

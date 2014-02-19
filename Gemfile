@@ -11,7 +11,6 @@ gem 'gmaps-autocomplete-rails', github: 'kristianmandrup/gmaps-autocomplete-rail
 gem 'haml'
 gem 'inherited_resources'
 gem 'jquery-rails'
-gem 'jquery-turbolinks', github: 'kossnocorp/jquery.turbolinks'
 gem 'jshint_on_rails'
 gem 'mini_magick'
 gem 'modernizr-rails'
@@ -23,9 +22,7 @@ gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'simple_form'
 gem 'therubyracer'
-gem 'turbolinks', github: 'rails/turbolinks'
 gem 'unf'
-gem 'yelpster', github: 'nvd/yelpster'
 
 group :doc do
   gem 'sdoc', require: false

@@ -4,7 +4,8 @@
   %ul
     -Story.where('visible is true').map(&:graphics).flatten.last(4).each do |graphic|
       %li
-        =image_tag(graphic.upload.thumb.url)
+        =link_to image_tag(graphic.upload.thumb.url), story_path(graphic.story)
+
 %ul#linkbuttons
   - Story.where('storybook is not null').where('visible is true').reverse.each do |story|
     .left
@@ -16,4 +17,4 @@
       %br
       = story.city
 
-    %li= link_to 'Read story', story_path(story)
+    %li=link_to 'Read story', story_path(story)

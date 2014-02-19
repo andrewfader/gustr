@@ -1,4 +1,6 @@
 table#topbar {
+  margin: 0;
+  padding: 0;
   td {
     a {
       color: black;
@@ -14,19 +16,21 @@ body {
   width: 768px;
 }
 #topbar {
-  margin: 0 auto;
   padding: 0;
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
   td {
     a { display: block; }
     margin: 0;
     padding: 0;
-    height: 60px;
-    border: 0;
+    border: 3px gray;
+    border-style: outset;
+    border-spacing: 0;
     text-align: center;
     span {
-      margin: 0 auto;
-      vertical-align: middle;
-      padding-top: 20px;
+      margin: 0;
     }
   }
   #left {
@@ -37,11 +41,8 @@ body {
       padding: 0;
       border-spacing: 0;
     }
-    width: 60px;
   }
   #logo {
-    width: 200px;
-    font-size: 35px;
     margin: 0;
     padding: 0;
   }
@@ -75,9 +76,6 @@ body {
   }
   ul#buttons {
     margin-top: 50px;
-    li {
-      margin: 5px;
-    }
     input, li.btn {
       border-radius: 10px;
       background-color: #009900;
@@ -89,7 +87,6 @@ body {
       height: 60px;
       box-shadow: 5px black;
       display: block;
-      margin: 0;
       padding: 10px;
       display: block;
       text-decoration: none;
@@ -206,9 +203,10 @@ table.tags, .taglist {
   color: white;
   font-weight: bold;
   font-size: 19px;
-  text-shadow: 5px -4px 2px #053752;
+  text-shadow: 4px -4px 2px #053752;
   border-radius: 30px;
-  margin-top: -11px;
+  margin-top: -13px;
+  margin-left: 5px;
   position: absolute;
 }
 .images {

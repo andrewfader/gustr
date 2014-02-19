@@ -5,7 +5,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def create
-    super { story_wizard_path(@story, page: 1) }
+    super { story_wizard_path(@story, page: 0) }
   end
 
   def update
@@ -24,7 +24,11 @@ class StoriesController < InheritedResources::Base
 
   def wizard
     @story = Story.find(params[:story_id])
-    @n = @story.step || 0
+    if params[:newtitle].present?
+      @story.update_attributes!(storybook: params[:newtitle])
+      @story.update_attributes!(step: 1)
+    end
+    @n = (params[:page].presence || @story.step || 0).to_i
     unless @story.step == 6
       render "stories/page"
     else
