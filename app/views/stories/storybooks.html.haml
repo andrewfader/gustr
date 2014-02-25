@@ -1,0 +1,5 @@
+%h1 My Storybooks
+-@story_hash.keys.each do |storybook|
+  %h2=storybook
+  -@story_hash[storybook].each do |story|
+    =render story

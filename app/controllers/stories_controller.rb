@@ -19,7 +19,7 @@ class StoriesController < InheritedResources::Base
   def publish
     story = Story.find(params[:story_id])
     story.update_attributes!(visible: true)
-    redirect_to story_path(story)
+    redirect_to storybooks_path
   end
 
   def wizard
@@ -49,6 +49,15 @@ class StoriesController < InheritedResources::Base
       end
     end
     render :show
+  end
+
+  def storybooks
+    @stories = Story.where('visible is true')
+    @story_hash = {}
+    @stories.each do |story|
+      @story_hash[story.storybook] ||= []
+      @story_hash[story.storybook] << story
+    end
   end
 
   def permitted_params

@@ -1,3 +1,6 @@
+a:visited {
+  color: silver;
+}
 body {
   margin: auto;
   padding: 0;
@@ -12,6 +15,7 @@ body {
   border-collapse: collapse;
   background-image: image-url('/assets/images/screen.jpg');
   min-width: 700px;
+  background-repeat: no-repeat;
   td {
     min-width: 70px;
     overflow: hidden;
