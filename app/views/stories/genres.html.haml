@@ -1,0 +1,5 @@
+%h1 My Genres
+-@story_hash.keys.each do |genre|
+  %h2=genre
+  -@story_hash[genre].each do |story|
+    =render story
