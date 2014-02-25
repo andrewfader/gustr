@@ -60,16 +60,6 @@ class StoriesController < InheritedResources::Base
     end
   end
 
-  def genres
-    @stories = Story.where('visible is true')
-    @story_hash = {}
-    @stories.each do |story|
-      @story_hash[story.genre] ||= []
-      @story_hash[story.genre] << story
-    end
-
-  end
-
   def permitted_params
     params.permit(story: [:user_id, :storybook, :title, :genre, :place_name, :city, {time1: []}, {time2: []}, :step, :why, :adventure, :nifty, :wise, {mom: []}])
   end
