@@ -38,14 +38,14 @@
   =Array.wrap(@story.time1).try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
   %br
   =Array.wrap(@story.time2).try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
-%h2 Why did you go?
-.why=@story.why
-%h2 What adventure did you choose?
+%h2 Stands out
 .adventure=@story.adventure
-%h2 What's the nifty or thrifty of it?
+%h2 The Neighborhood
 .nifty=@story.nifty
 %h2 Word to the wise!
 .wise=@story.wise
+%h2 Scribbles
+.why=@story.why
 %h2 Would you take your mom?
 .mom=Array.wrap(@story.mom).try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
 - if current_user && @story.user_id == current_user.id
