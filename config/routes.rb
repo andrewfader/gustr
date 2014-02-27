@@ -15,4 +15,5 @@ Gustr::Application.routes.draw do
   end
   get :storybooks, controller: 'stories'
   get :genres, controller: 'stories'
+  get :genre, controller: 'stories'
 end

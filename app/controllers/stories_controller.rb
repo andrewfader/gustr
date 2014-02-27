@@ -52,7 +52,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def storybooks
-    @stories = Story.where('visible is true')
+    @stories = Story.where(user_id: current_user.id)
     @story_hash = {}
     @stories.each do |story|
       @story_hash[story.storybook] ||= []
@@ -61,13 +61,11 @@ class StoriesController < InheritedResources::Base
   end
 
   def genres
-    @stories = Story.where('visible is true')
-    @story_hash = {}
-    @stories.each do |story|
-      @story_hash[story.genre] ||= []
-      @story_hash[story.genre] << story
-    end
+  end
 
+  def genre
+    @genre = params[:genre]
+    @stories = Story.where(visible: true).where(genre: @genre)
   end
 
   def permitted_params

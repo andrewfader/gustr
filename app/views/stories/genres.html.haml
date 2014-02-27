@@ -1,5 +1,4 @@
-%h1 My Genres
--@story_hash.keys.each do |genre|
-  %h2=genre
-  -@story_hash[genre].each do |story|
-    =render story
+%h1 Genres
+%ul#buttons
+  -Story::GENRES.each do |genre|
+    %li.btn= link_to genre, genre_path(genre: genre)
