@@ -1,3 +1,4 @@
+%p
 .genre
   %h2 Genre: #{@story.genre}
   %h2 Storybook: #{@story.storybook}
@@ -11,7 +12,7 @@
         = link_to ">", right
   - elsif stories.count == 1
     .btn_green.hover
-      = link_to ">", stories.select { |story| story.id > @story.id }.last
+      = link_to ">", stories.first
 
 - if @story.graphics.present?
   %p

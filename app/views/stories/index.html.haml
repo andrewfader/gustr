@@ -26,7 +26,7 @@
   = render story
 
 - if current_user
-  - if (stories = Story.published.where(user_id: 1)).present?
+  - if (stories = Story.where('storybook is not null').where('visible is null').where(user_id: current_user.id)).present?
     %h1 Drafts
     - stories.each do |story|
       = render story

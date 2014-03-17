@@ -9,6 +9,7 @@ body {
   width: 768px;
 }
 #topbar {
+  min-height: 88px;
   margin: auto !important;
   padding: 0;
   border-spacing: 0 !important;
@@ -151,6 +152,9 @@ body {
       margin-top: 85px;
     }
     text-align: left;
+    &.draft {
+      background-color: lightgrey;
+    }
   }
   #footer {
     margin: auto;

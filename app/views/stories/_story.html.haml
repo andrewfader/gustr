@@ -1,9 +1,16 @@
-%ul#linkbuttons
+- unless story.visible
+  - draft = true
+- else
+  - draft = false
+%ul#linkbuttons{class: draft ? 'draft' : ''}
   .left
     = image_tag(story.graphics.first.upload.thumb.url) if story.graphics.present?
   .right
     %h3
-      = story.storybook
+      - if draft
+        #{story.storybook} (DRAFT)
+      - else
+        =story.storybook
     = story.genre
     %br
     = story.place_name
