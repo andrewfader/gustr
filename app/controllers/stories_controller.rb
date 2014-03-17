@@ -52,7 +52,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def tags
-    @stories = Tag.send(params[:tags]).map(&:story).where('visible is true').where('storybook is not null').uniq
+    @stories = Tag.send(params[:tags]).map(&:story).select{|story| story.visible == true }.select{|story|story.storybook != null}.uniq
   end
 
   def search
