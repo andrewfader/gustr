@@ -89,7 +89,7 @@ body {
       margin: 10px auto;
       width: 320px;
       height: 60px;
-      box-shadow: 5px black;
+      box-shadow: 5px 5px 5px black;
       display: block;
       padding: 10px;
       display: block;
@@ -294,4 +294,22 @@ table.tags {
 }
 .tag {
   border: 1px solid black;
+}
+.btn_green, .btn_gradient {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  text-shadow: 1px 1px 1px black;
+  padding: 15px;
+  margin: 15px;
+  display: inline-block;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+.btn_gradient {
+  background: linear-gradient(#cde460,#78a139);
+}
+.btn_green {
+  background-color: green;
 }

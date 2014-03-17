@@ -16,7 +16,7 @@ function storyUp() {
   function() {
     $(this).css('background','#009900');
   });
-  $('td.hover').hover(function() {
+  $('.hover').hover(function() {
     $(this).css('background',"linear-gradient(#cde460,#78a139)");
   },
   function() {

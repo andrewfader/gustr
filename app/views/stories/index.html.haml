@@ -1,5 +1,7 @@
-%h2=link_to "My Storybooks", storybooks_path
-%h2=link_to "Genres", genres_path
+.btn_green.hover
+  %h2=link_to "My Storybooks", storybooks_path
+.btn_green.hover
+  %h2=link_to "Genres", genres_path
 
 .images
   .header
@@ -17,7 +19,7 @@
     - Tag.last(12).in_groups_of(6).each do |group|
       %tr
       - group.compact.each do |tag|
-        %td.gray
+        %td.gray.hover
           = link_to tag.tag, tags_path(tags: tag.tag)
 
 - Story.where('storybook is not null').where('visible is true').reverse.each do |story|
