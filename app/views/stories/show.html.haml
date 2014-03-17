@@ -3,10 +3,10 @@
   %h2 Storybook: #{@story.storybook}
 .prevnext
   - if (stories = Story.published.where(storybook: @story.storybook).reject{|story|story.id == @story.id}).count > 1
-    - if (left = stories.select { |story| story.id < @story.id }.last)
+    - if (left = stories.select { |story| story.id < @story.id }.first)
       .btn_green.hover
         = link_to "<", left
-    - if (right = stories.select { |story| story.id > @story.id }.first)
+    - if (right = stories.select { |story| story.id > @story.id }.last)
       .btn_green.hover
         = link_to ">", right
   - elsif stories.count == 1
