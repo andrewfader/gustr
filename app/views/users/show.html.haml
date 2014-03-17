@@ -1,8 +1,16 @@
 %h1
   Profile for #{@user.first_name} #{@user.last_name}
-  = link_to "Edit", edit_registration_path(@user)
-%ul
-  %li Email #{@user.email}
+  - if current_user && current_user.id == @user.id
+    = link_to "(Edit)", edit_registration_path(@user)
+- if current_user.image_url
+  = image_tag current_user.image_url
+
+%ul#user
   %li City: #{@user.city}
   %li Zip: #{@user.zip}
   %li Birthday: #{@user.birthdate} (#{time_ago_in_words(@user.birthdate)})
+
+%h2="#{@user.first_name}'s stories"
+- if (stories = Story.published.where(user_id: @user.id)).present?
+  - stories.each do |story|
+    = render story

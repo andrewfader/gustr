@@ -18,4 +18,5 @@ Gustr::Application.routes.draw do
   get :genre, controller: 'stories'
   get :tags, controller: 'stories'
   get :search, controller: 'stories'
+  resources :users
 end

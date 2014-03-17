@@ -2,6 +2,15 @@
 .genre
   %h2 Genre: #{@story.genre}
   %h2 Storybook: #{@story.storybook}
+%p
+.title
+  %h2 Chapter Title: #{@story.place_name}
+  - user = User.find(@story.user_id) if @story.user_id
+  - if user
+    %h2 by: #{link_to user, user}
+%p
+.citytime
+  #{@story.city}
 .prevnext
   - if (stories = Story.published.where(storybook: @story.storybook).reject{|story|story.id == @story.id}).count > 1
     - if (left = stories.select { |story| story.id < @story.id }.last)
@@ -43,11 +52,7 @@
           - else
             = link_to tag, tags_path(tags: tag.underscore)
 %p
-.title
-  %h2 Chapter Title: #{@story.place_name}
-%p
 .citytime
-  #{@story.city}
   %br
   =Array.wrap(@story.time1).try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
   %br
