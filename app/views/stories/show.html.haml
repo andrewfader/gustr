@@ -16,10 +16,10 @@
   .images
     .header
       Story Photos
-      %ul
-        -@story.graphics.each do |graphic|
-          %li
-            =image_tag(graphic.upload.thumb.url)
+    %ul
+      -@story.graphics.each do |graphic|
+        %li
+          =image_tag(graphic.upload.thumb.url)
 
 %p
 = simple_form_for [@story, @story.graphics.build] do |f|
