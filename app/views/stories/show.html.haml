@@ -41,7 +41,7 @@
           - if current_user && @story.user_id == current_user.id
             = link_to tag, story_tag_path(@story, tag: tag.underscore)
           - else
-            = link_to tag, tags_path(tags: tag)
+            = link_to tag, tags_path(tags: tag.underscore)
 %p
 .title
   %h2 Chapter Title: #{@story.place_name}
