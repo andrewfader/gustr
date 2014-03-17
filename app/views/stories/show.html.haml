@@ -25,7 +25,7 @@
   .header
     Hot Tags
   %table.tags.refresh
-    - Tag::TAGS.in_groups_of(8).each do |group|
+    - Tag::TAGS.in_groups_of(6).each do |group|
       %tr
       - group.compact.each do |tag|
         %td{class: @story.tags.where(tag: tag.underscore).present? ? 'green' : 'gray'}

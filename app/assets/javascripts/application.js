@@ -15,3 +15,5 @@
 //= require gmaps-auto-complete
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree .
+//= require jquery.turbolinks
+//= require turbolinks

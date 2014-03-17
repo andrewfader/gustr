@@ -23,6 +23,8 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'simple_form'
 gem 'therubyracer'
 gem 'unf'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 group :doc do
   gem 'sdoc', require: false

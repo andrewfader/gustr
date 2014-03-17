@@ -27,59 +27,6 @@ ul, li {
   display: inline-block;
 }
 
-table.tags.topbar {
-  border-spacing: 0;
-  td {
-    border-left: 0;
-    &:nth-child(1) {
-      border-left: 1px solid darkslategray;
-      background-color: white;
-      color: black;
-    }
-  }
-  .count {
-    position: absolute;
-    background-color: blue;
-    border: 1px solid darkslategray;
-    border-radius: 50%;
-    padding: 2px 8px 2px 8px;
-    text-align: center;
-  }
-}
-table.tags {
-  padding: 0;
-  border-spacing: 5px;
-  margin: 0;
-  tr, tbody {
-    padding: 0;
-    margin: 0;
-  }
-  td {
-    &.green {
-      background-color: green;
-    }
-    &.gray {
-      background-color: gray;
-    }
-    color: white;
-    padding: 10px;
-    margin: 0;
-    text-align: center;
-    font-weight: bold;
-    border: 1px solid darkslategray;
-    a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      &:visited {
-        color: white;
-      }
-    }
-  }
-}
-.tag {
-  border: 1px solid black;
-}
 h1 {
   margin: 5px 0 5px 0;
 }
