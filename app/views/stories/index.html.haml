@@ -9,6 +9,17 @@
       %li
         =link_to image_tag(graphic.upload.thumb.url), story_path(graphic.story)
 
+%p
+.taglist.images
+  .header
+    Hot Tags
+  %table.tags.refresh
+    - Tag.last(12).in_groups_of(6).each do |group|
+      %tr
+      - group.compact.each do |tag|
+        %td.gray
+          = link_to tag.tag, tags_path(tags: tag.tag)
+
 - Story.where('storybook is not null').where('visible is true').reverse.each do |story|
   = render story
 

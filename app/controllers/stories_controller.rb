@@ -51,6 +51,10 @@ class StoriesController < InheritedResources::Base
     render :show
   end
 
+  def tags
+    @stories = Tag.send(params[:tags]).map(&:story).uniq
+  end
+
   def storybooks
     @stories = Story.where(user_id: current_user.id)
     @story_hash = {}
