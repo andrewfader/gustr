@@ -20,7 +20,7 @@
       %tr
       - group.compact.each do |tag|
         %td.gray.hover
-          = link_to tag.tag, tags_path(tags: tag.tag)
+          = link_to tag.tag.titleize, tags_path(tags: tag.tag)
 
 - Story.published.reverse.each do |story|
   = render story

@@ -13,4 +13,4 @@ Search
       %td= story.genre
       %td= story.place_name
       %td= story.city
-      %td= story.tags.map(&:tag).to_sentence
+      %td= story.tags.map(&:tag).map(&:titleize).to_sentence
