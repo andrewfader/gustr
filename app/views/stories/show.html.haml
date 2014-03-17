@@ -2,12 +2,12 @@
   %h2 Genre: #{@story.genre}
   %h2 Storybook: #{@story.storybook}
 .prevnext
-  - if (stories = Story.published.where(storybook: @story.storybook).reject{|story|story.id ==@story.id}).count > 1
+  - if (stories = Story.published.where(storybook: @story.storybook).reject{|story|story.id == @story.id}).count > 1
     .btn_green.hover
       = link_to "<", stories.select { |story| story.id < @story.id }.last
     .btn_green.hover
       = link_to ">", stories.select { |story| story.id > @story.id }.first
-  - elsif stories.count == 2
+  - elsif stories.count == 1
     .btn_green.hover
       = link_to ">", stories.select { |story| story.id > @story.id }.first
 
