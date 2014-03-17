@@ -7,7 +7,7 @@
   .header
     Latest Story Photos
   %ul
-    -Story.where('visible is true').map(&:graphics).flatten.last(4).each do |graphic|
+    -Story.published.map(&:graphics).flatten.last(4).each do |graphic|
       %li
         =link_to image_tag(graphic.upload.thumb.url), story_path(graphic.story)
 
@@ -22,11 +22,11 @@
         %td.gray.hover
           = link_to tag.tag, tags_path(tags: tag.tag)
 
-- Story.where('storybook is not null').where('visible is true').reverse.each do |story|
+- Story.published.reverse.each do |story|
   = render story
 
 - if current_user
-  - if (stories = Story.where('storybook is not null').where(user_id: 1).where('visible is null')).present?
+  - if (stories = Story.published.where(user_id: 1)).present?
     %h1 Drafts
     - stories.each do |story|
       = render story

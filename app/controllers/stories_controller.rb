@@ -52,7 +52,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def tags
-    @stories = Tag.send(params[:tags]).map(&:story).uniq
+    @stories = Tag.send(params[:tags]).map(&:story).where('visible is true').where('storybook is not null').uniq
   end
 
   def search
@@ -73,7 +73,7 @@ class StoriesController < InheritedResources::Base
 
   def genre
     @genre = params[:genre]
-    @stories = Story.where(visible: true).where(genre: @genre)
+    @stories = Story.published.where(genre: @genre)
   end
 
   def permitted_params

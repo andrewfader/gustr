@@ -6,7 +6,7 @@ Search
       %th Genre
       %th Chapter
       %th City
-  - Story.where('visible is true').where('storybook is not null').all.each do |story|
+  - Story.published.each do |story|
     %tr
       %td= story.storybook
       %td= story.genre

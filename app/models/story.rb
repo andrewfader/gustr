@@ -11,4 +11,7 @@ class Story < ActiveRecord::Base
   def tagged_by(ip, tag)
     Tag.where(place_id: self.id, user_ip: ip, tag: tag).present?
   end
+  def self.published
+    self.where('visible is true').where('storybook is not null')
+  end
 end
