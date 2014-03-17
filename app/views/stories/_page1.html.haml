@@ -1,7 +1,7 @@
 %h2 Add to existing storybook
 %ul#buttons
   .story
-    -Story.where(user_id: current_user.id).map(&:storybook).compact.uniq.each do |sb|
+    -Story.where(user_id: current_user.id).map(&:storybook).map(&:presence).compact.uniq.each do |sb|
       %li.btn=link_to sb, "/stories/#{@story.id}/wizard?&newtitle=#{sb}"
 #content
   %h2 Add to new storybook.

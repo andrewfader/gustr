@@ -8,6 +8,7 @@ class Story < ActiveRecord::Base
   serialize :mom
   serialize :time1
   serialize :time2
+  # validates_presence_of :place_name, :expensive, :city, :time1, :time2, :nifty, :adventure, :wise, :mom
   def tagged_by(ip, tag)
     Tag.where(place_id: self.id, user_ip: ip, tag: tag).present?
   end

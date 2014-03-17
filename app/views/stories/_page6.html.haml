@@ -1,4 +1,6 @@
 Scribbles
 = f.input :why, label: false, placeholder: "Tell people about other useful tips or information not already shared."
 Would you take your mom?
-= f.input :mom, as: :check_boxes, collection: ["Yes","No"], label: false
+%p
+= f.input :mom, as: :check_boxes, collection: ["Yes","No"], label: false, required: true
+%p
