@@ -21,9 +21,9 @@
             = link_to image_tag('register.jpg'), new_user_registration_path
           - else
             - if current_user.image_url
-              = image_tag current_user.image_url
+              = link_to image_tag(current_user.image_url), current_user
             %span=link_to "Log out", destroy_user_session_path
-            %span=link_to "My profile", user_path(current_user.id)
+            %span=link_to "My profile", current_user
     %td#logo.hover
       = link_to "", '/'
     %td#icon.hover
