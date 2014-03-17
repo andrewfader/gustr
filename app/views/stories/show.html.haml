@@ -39,26 +39,35 @@
       - group.compact.each do |tag|
         %td.hover{class: @story.tags.where(tag: tag.underscore).present? ? 'green' : 'gray'}
           = link_to tag, story_tag_path(@story, tag: tag.underscore)
+%p
 .title
   %h2 Chapter Title: #{@story.place_name}
+%p
 .citytime
   #{@story.city}
   %br
   =Array.wrap(@story.time1).try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
   %br
   =Array.wrap(@story.time2).try {|time1| time1.map(&:presence).try(:compact)}.try(:to_sentence)
+%p
 %h2 Stands out
 .adventure=@story.adventure
+%p
 %h2 The Neighborhood
 .nifty=@story.nifty
+%p
 %h2 Word to the wise!
 .wise=@story.wise
+%p
 %h2 Scribbles
 .why=@story.why
+%p
 %h2 Would you take your mom?
 .mom=Array.wrap(@story.mom).try {|mom| mom.map(&:presence).try(:compact)}.try(:to_sentence)
+%p
 - if current_user && @story.user_id == current_user.id
   .buttons
     =link_to "Edit story", edit_story_path(@story), class: 'button'
     - if @story.visible == nil || @story.visible == false
       =link_to "Publish story", story_publish_path(@story), class: 'button'
+%p
