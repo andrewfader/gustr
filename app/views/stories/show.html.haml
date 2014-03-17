@@ -4,12 +4,13 @@
 .prevnext
   - if (stories = Story.published.where(storybook: @story.storybook).reject{|story|story.id ==@story.id}).count > 1
     .btn_green.hover
-      = link_to "Previous", stories.select { |story| story.id < @story.id }.last
+      = link_to "<", stories.select { |story| story.id < @story.id }.last
     .btn_green.hover
-      = link_to "Next", stories.select { |story| story.id > @story.id }.first
+      = link_to ">", stories.select { |story| story.id > @story.id }.first
   - elsif stories.count == 1
     .btn_green.hover
-      = link_to "Next", stories.select { |story| story.id > @story.id }.first
+      = link_to ">", stories.select { |story| story.id > @story.id }.first
+%p
 .images
   .header
     Story Photos
@@ -19,11 +20,12 @@
         %li
           =image_tag(graphic.upload.thumb.url)
 
+%p
 = simple_form_for [@story, @story.graphics.build] do |f|
   = f.input :story_id, as: :hidden,input_html: {value: @story.id}
   = f.input :upload
   = f.submit
-
+%p
 .taglist.images
   .header
     Hot Tags
