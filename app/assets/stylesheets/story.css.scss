@@ -195,12 +195,14 @@ label.checkbox {
 * {
   font-family: 'PT Sans', sans-serif;
 }
-input.string, textarea {
-  min-width: 380px;
-  min-height: 100px;
-  padding: 10px;
-  margin: 20px;
-  border: 1px solid black;
+form:not(.edit_user) {
+  input.string, textarea {
+    min-width: 380px;
+    min-height: 100px;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid black;
+  }
 }
 td a { display: block; }
 .citytime, .taglist, .why, .adventure, .nifty, .wise, .mom {
