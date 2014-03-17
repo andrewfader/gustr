@@ -7,18 +7,19 @@
       = link_to "<", stories.select { |story| story.id < @story.id }.last
     .btn_green.hover
       = link_to ">", stories.select { |story| story.id > @story.id }.first
-  - elsif stories.count == 1
+  - elsif stories.count == 2
     .btn_green.hover
       = link_to ">", stories.select { |story| story.id > @story.id }.first
-%p
-.images
-  .header
-    Story Photos
-  - if @story.graphics.present?
-    %ul
-      -@story.graphics.each do |graphic|
-        %li
-          =image_tag(graphic.upload.thumb.url)
+
+- if @story.graphics.present?
+  %p
+  .images
+    .header
+      Story Photos
+      %ul
+        -@story.graphics.each do |graphic|
+          %li
+            =image_tag(graphic.upload.thumb.url)
 
 %p
 = simple_form_for [@story, @story.graphics.build] do |f|
