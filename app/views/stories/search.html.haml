@@ -6,9 +6,11 @@ Search
       %th Genre
       %th Chapter
       %th City
+      %th Tags
   - Story.published.each do |story|
     %tr
       %td= story.storybook
       %td= story.genre
       %td= story.place_name
       %td= story.city
+      %td= story.tags.map(&:tag).to_sentence
