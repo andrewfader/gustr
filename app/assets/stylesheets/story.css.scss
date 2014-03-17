@@ -187,7 +187,7 @@ label.checkbox {
   display: inline-block;
 }
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 input.string, textarea {
   min-width: 380px;
@@ -312,4 +312,9 @@ table.tags {
 }
 .btn_green {
   background-color: green;
+}
+table.datatable {
+  tr, tbody, td {
+    color: black;
+  }
 }

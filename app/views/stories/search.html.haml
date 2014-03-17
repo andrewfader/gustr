@@ -1,0 +1,14 @@
+Search
+%table.datatable
+  %thead
+    %tr
+      %th Storybook
+      %th Genre
+      %th Chapter
+      %th City
+  - Story.where('visible is true').where('storybook is not null').all.each do |story|
+    %tr
+      %td= story.storybook
+      %td= story.genre
+      %td= story.place_name
+      %td= story.city

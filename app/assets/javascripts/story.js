@@ -40,6 +40,10 @@ function storyUp() {
     window.history.back();
   });
 
+  $('table.datatable').dataTable({
+    "bJQueryUI": true
+  });
+
 }
 $(document).ready(function() { storyUp(); } )
 $(document).on('page:load', function() { storyUp(); } )

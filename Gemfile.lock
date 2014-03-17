@@ -5,6 +5,14 @@ GIT
     gmaps-autocomplete-rails (0.1.2.1)
       rails (>= 3.1.0)
 
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 788a7b24caf8fe58a5493aa3f6a065879a9f752a
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -273,6 +281,7 @@ DEPENDENCIES
   haml
   inherited_resources
   jazz_hands
+  jquery-datatables-rails!
   jquery-rails
   jquery-turbolinks
   jshint_on_rails

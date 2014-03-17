@@ -25,6 +25,7 @@ gem 'therubyracer'
 gem 'unf'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 group :doc do
   gem 'sdoc', require: false

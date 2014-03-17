@@ -4,7 +4,7 @@
     %title Gustr
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ1M9CIeCufVkulo1zYFtJ-xZsYJD81sM&sensor=true&libraries=geometry,places"
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     = javascript_include_tag :modernizr
     %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}/
     = javascript_include_tag "application"
@@ -25,6 +25,7 @@
     %td#logo.hover
       = link_to "", '/'
     %td#icon.hover
+      = link_to "", search_path
     %td#stories.hover
       = link_to "", stories_path
     %td#addstory.hover
