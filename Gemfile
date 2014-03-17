@@ -26,6 +26,8 @@ gem 'unf'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'ui_datepicker-rails3', github: 'kristianmandrup/ui_datepicker-rails3'
+gem 'geocoder'
 
 group :doc do
   gem 'sdoc', require: false

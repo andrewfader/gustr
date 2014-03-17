@@ -8,9 +8,9 @@
   - user = User.find(@story.user_id) if @story.user_id
   - if user
     %h2 by: #{link_to user, user}
+#map-canvas
 %p
-.citytime
-  #{@story.city}
+#{@story.city}
 .prevnext
   - if (stories = Story.published.where(storybook: @story.storybook).reject{|story|story.id == @story.id}).count > 1
     - if (left = stories.select { |story| story.id < @story.id }.last)

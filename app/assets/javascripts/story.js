@@ -4,6 +4,8 @@ function tagRefresh(url) {
   });
 }
 function storyUp() {
+  $('input.ui-date-picker').datepicker();
+
   $('ul#buttons input').hover(function() {
     $(this).css('background',"linear-gradient(#cde460,#78a139)");
   },
@@ -24,15 +26,16 @@ function storyUp() {
   });
   var completer;
 
-  // completer = new GmapsCompleter({
-  // inputField: '#story_place_name',
-  // mapElem: 'null'
-  // });
+  completer = new GmapsCompleter({
+    inputField: '#story_place_name',
+    mapElem: 'null'
+  });
 
-  // completer.autoCompleteInit({
-  // country: "USA",
-  // region: "US"
-  // });
+  completer.autoCompleteInit({
+    country: "USA",
+    region: "US"
+  });
+
   $('.button').button();
   $('.button.back').click(function(e) {
     e.preventDefault();
@@ -43,6 +46,25 @@ function storyUp() {
   $('table.datatable').dataTable({
     "bJQueryUI": true
   });
+
+  if ($('#map-canvas').length > 0) {
+    foo = $.getJSON(document.location + '.json', function(data, status, xhr) {
+      longitude = data["longitude"];
+      latitude = data["latitude"];
+      var position = new google.maps.LatLng(latitude, longitude);
+      var mapOptions = {
+        zoom: 13,
+        center: position,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      var marker = new google.maps.Marker({
+        position: position,
+        map: map
+      });
+    });
+  }
+
 
 }
 $(document).ready(function() { storyUp(); } )

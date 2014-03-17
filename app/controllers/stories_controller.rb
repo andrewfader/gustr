@@ -1,4 +1,5 @@
 class StoriesController < InheritedResources::Base
+  respond_to :json
   before_filter :authenticate_user!, only: [:wizard, :tag, :publish, :storybooks]
   def new
     @story = Story.new

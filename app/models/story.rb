@@ -9,10 +9,21 @@ class Story < ActiveRecord::Base
   serialize :time1
   serialize :time2
   # validates_presence_of :place_name, :expensive, :city, :time1, :time2, :nifty, :adventure, :wise, :mom
+  geocoded_by :location
+
   def tagged_by(ip, tag)
     Tag.where(place_id: self.id, user_ip: ip, tag: tag).present?
   end
   def self.published
     self.where('visible is true').where('storybook is not null')
+  end
+
+  def as_json(options={})
+    geocode
+    super
+  end
+
+  def location
+    "#{place_name} #{city}"
   end
 end

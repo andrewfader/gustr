@@ -107,6 +107,7 @@ body {
     }
   }
   ul#linkbuttons {
+    box-shadow: 5px 5px 5px black;
     .left,.right, li {
       display: inline-block;
     }
@@ -259,6 +260,9 @@ table.tags.topbar {
     text-align: center;
   }
 }
+.taglist, .images {
+  box-shadow: 5px 5px 5px black;
+}
 table.tags {
   padding: 0;
   border-spacing: 5px;
@@ -337,4 +341,9 @@ ul#user {
   li {
     display: block;
   }
+}
+#map-canvas {
+  width: 240px;
+  height: 240px;
+  margin: 10px auto;
 }

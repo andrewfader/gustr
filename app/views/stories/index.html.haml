@@ -3,6 +3,8 @@
 .btn_green.hover
   %h2=link_to "Genres", genres_path
 
+%br
+%p
 .images
   .header
     Latest Story Photos
@@ -11,6 +13,7 @@
       %li
         =link_to image_tag(graphic.upload.thumb.url), story_path(graphic.story)
 
+%br
 %p
 .taglist.images
   .header
@@ -21,8 +24,9 @@
       - group.compact.each do |tag|
         %td.gray.hover
           = link_to tag.tag.titleize, tags_path(tags: tag.tag)
-
-- Story.published.reverse.each do |story|
+%br
+%p
+- Story.published.reverse.last(10).each do |story|
   = render story
 
 - if current_user

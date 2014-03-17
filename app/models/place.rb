@@ -1,5 +1,4 @@
 class Place < ActiveRecord::Base
-  # include Yelp::V1::Review::Request
   has_many :graphics
   has_many :tags
   accepts_nested_attributes_for :graphics
@@ -26,5 +25,4 @@ class Place < ActiveRecord::Base
       self.save!
     end
   end
-
 end
