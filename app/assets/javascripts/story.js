@@ -48,7 +48,7 @@ function storyUp() {
   });
 
   if ($('#map-canvas').length > 0) {
-    foo = $.getJSON(document.location + '.json', function(data, status, xhr) {
+    foo = $.getJSON('/stories/' + document.location.toString().split('/')[4] + '.json', function(data, status, xhr) {
       longitude = data["longitude"];
       latitude = data["latitude"];
       var position = new google.maps.LatLng(latitude, longitude);
