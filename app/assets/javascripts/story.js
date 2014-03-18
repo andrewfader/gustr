@@ -43,9 +43,11 @@ function storyUp() {
     window.history.back();
   });
 
-  $('table.datatable').dataTable({
-    "bJQueryUI": true
-  });
+  if ($('table.datatable').length > 0) {
+    $('table.datatable').dataTable({
+      "bJQueryUI": true
+    });
+  }
 
   if ($('#map-canvas').length > 0) {
     urlfragments = document.location.toString().split('/');

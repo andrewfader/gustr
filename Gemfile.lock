@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/kossnocorp/jquery.turbolinks.git
+  revision: 76c7a4ab18f64239896c4899b1fac78d84f0aac2
+  specs:
+    jquery-turbolinks (2.0.2)
+      railties (>= 3.1.0)
+      turbolinks
+
+GIT
   remote: git://github.com/kristianmandrup/gmaps-autocomplete-rails.git
   revision: 9cf8fd79485aa8d5d47ab15f61f5dd0650e24fd0
   specs:
@@ -132,9 +140,6 @@ GEM
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-turbolinks (2.0.2)
-      railties (>= 3.1.0)
-      turbolinks
     jshint_on_rails (1.0.3)
     json (1.8.1)
     jwt (0.1.11)
@@ -291,7 +296,7 @@ DEPENDENCIES
   jazz_hands
   jquery-datatables-rails!
   jquery-rails
-  jquery-turbolinks
+  jquery-turbolinks!
   jshint_on_rails
   mini_magick
   modernizr-rails
