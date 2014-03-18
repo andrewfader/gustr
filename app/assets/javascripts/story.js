@@ -48,7 +48,14 @@ function storyUp() {
   });
 
   if ($('#map-canvas').length > 0) {
-    foo = $.getJSON('/stories/' + document.location.toString().split('/')[4] + '.json', function(data, status, xhr) {
+    urlfragments = document.location.toString().split('/');
+    if (urlfragments[3] == "stories") {
+      id = urlfragments[4]
+    }
+    if (urlfragments[2] == "stories") {
+      id = urlfragments[3]
+    }
+    foo = $.getJSON('/stories/' + id + '.json', function(data, status, xhr) {
       longitude = data["longitude"];
       latitude = data["latitude"];
       var position = new google.maps.LatLng(latitude, longitude);
