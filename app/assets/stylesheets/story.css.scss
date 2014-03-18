@@ -348,9 +348,9 @@ ul#user {
   height: 240px;
   margin: 10px auto;
 }
-td#left, td#left a, td#left tr, td#left td{
+td#left, td#left a.imglink, td#left tr, td#left td{
   width: 80px !important;
 }
-td#left a, td#left td{
+td#left a.imglink, td#left td{
   height: 44px !important;
 }
