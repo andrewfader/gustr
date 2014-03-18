@@ -349,3 +349,9 @@ ul#user {
   height: 240px;
   margin: 10px auto;
 }
+td#left, td#left a, td#left tr, td#left td{
+  width: 80px !important;
+}
+td#left a, td#left td{
+  height: 44px !important;
+}
