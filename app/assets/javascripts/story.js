@@ -25,6 +25,14 @@ function storyUp() {
     $(this).css('background','');
   });
   var completer;
+  $('a.togLink').click(function() {
+    if($(this).parent().hasClass('green')) {
+      $(this).parent().addClass('gray').removeClass('green');
+    }
+    else {
+      $(this).parent().addClass('green').removeClass('gray');
+    }
+  });
 
   completer = new GmapsCompleter({
     inputField: '#story_place_name',

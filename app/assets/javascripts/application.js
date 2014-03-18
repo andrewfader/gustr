@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require gmaps-auto-complete
-//= require_tree ../../../vendor/assets/javascripts
 //= require dataTables/jquery.dataTables
-//= require_tree .
 //= require turbolinks
+//= require_tree ../../../vendor/assets/javascripts
+//= require_tree .

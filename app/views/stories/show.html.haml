@@ -43,12 +43,12 @@
   .header
     Hot Tags
   %table.tags.refresh
-    - Tag::TAGS.in_groups_of(6).each do |group|
+    - Tag::TAGS.in_groups_of(5).each do |group|
       %tr
       - group.compact.each do |tag|
         %td.hover{class: @story.tags.where(tag: tag.underscore).present? ? 'green' : 'gray'}
           - if current_user && @story.user_id == current_user.id
-            = link_to tag, story_tag_path(@story, tag: tag.underscore)
+            = link_to tag, story_tag_path(@story, tag: tag.underscore), remote: true, class: 'togLink'
           - else
             = link_to tag, tags_path(tags: tag.underscore)
 %p
