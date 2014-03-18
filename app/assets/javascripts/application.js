@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-1.10.2
+//= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery-ui-1.10.4.custom.js
+//= require jquery-ui
 //= require gmaps-auto-complete
 //= require dataTables/jquery.dataTables
 //= require_tree ../../../vendor/assets/javascripts
