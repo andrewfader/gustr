@@ -19,7 +19,7 @@
   .header
     Hot Tags
   %table.tags.refresh
-    - Tag.last(12).in_groups_of(6).each do |group|
+    - Tag.last(10).in_groups_of(5).each do |group|
       %tr
       - group.compact.each do |tag|
         %td.gray.hover

@@ -8,14 +8,48 @@ body {
   color: white;
   width: 768px;
 }
-#topbar {
+@media only screen and (max-width:642px) {
+  body {
+    width: 600px !important;
+  }
+  * {
+    max-width: 600px !important;
+  }
+  #linkbuttons, .images, .taglist {
+    width: 440px !important;
+  }
+  .topbar#topbar {
+    width: 441px;
+    .stories, .addstory {
+      display: none;
+    }
+  }
+  #topbar2 {
+    display: block !important;
+    width: 263px;
+    background-repeat: no-repeat;
+    height: 92px;
+    background-image: image-url('/assets/images/screen2.jpg');
+    margin: auto !important;
+    border-spacing: 0 !important;
+    padding: 0;
+    .stories, .addstory {
+      display: inline-block !important;
+      height: 92px !important;
+    }
+  }
+}
+#topbar2 {
+  display: none;
+}
+.topbar {
   height: 92px;
   margin: auto !important;
   padding: 0;
   border-spacing: 0 !important;
   border-collapse: collapse;
   background-image: image-url('/assets/images/screen.jpg');
-  min-width: 700px;
+  width: 700px;
   background-repeat: no-repeat;
   td {
     min-width: 70px;
@@ -56,14 +90,14 @@ body {
   #icon {
     width: 60px;
   }
-  #addstory,#stories,#link {
+  .addstory, .stories,#link {
     color: white;
     font-weight: bold;
   }
-  #addstory {
+  .addstory {
     width: 120px;
   }
-  #stories {
+  .stories {
     width: 120px;
   }
   #link {
@@ -107,7 +141,7 @@ body {
   }
   ul#linkbuttons {
     box-shadow: 5px 5px 5px black;
-    .left,.right, li {
+    .left, .right, li {
       display: inline-block;
     }
     h3 {
@@ -121,7 +155,7 @@ body {
     }
     margin-top: 50px;
     vertical-align: top;
-    min-width: 680px;
+    width: 680px;
     background-color: white;
     height: 160px;
     margin-left: 0;
@@ -242,32 +276,17 @@ td#left, td#left tr, td#left td, td#left a {
   margin: 0;
 }
 
-table.tags.topbar {
-  border-spacing: 0;
-  td {
-    border-left: 0;
-    &:nth-child(1) {
-      border-left: 1px solid darkslategray;
-      background-color: white;
-      color: black;
-    }
-  }
-  .count {
-    position: absolute;
-    background-color: blue;
-    border: 1px solid darkslategray;
-    border-radius: 50%;
-    padding: 2px 8px 2px 8px;
-    text-align: center;
-  }
-}
 .taglist, .images {
   box-shadow: 5px 5px 5px black;
 }
+.taglist {
+  max-width: 660px !important;
+}
 table.tags {
+  max-width: 680px;
   padding: 0;
   border-spacing: 5px;
-  margin: 0;
+  margin: auto;
   tr, tbody {
     padding: 0;
     margin: 0;

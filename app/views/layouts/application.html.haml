@@ -6,11 +6,11 @@
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ1M9CIeCufVkulo1zYFtJ-xZsYJD81sM&sensor=true&libraries=geometry,places"
     <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     = javascript_include_tag :modernizr
-    <meta name="viewport" content="width=768, initial-scale=1">
     = javascript_include_tag "application"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     = csrf_meta_tags
   %body
-  %table#topbar{cellpadding: 0, cellspacing: 0}
+  %table.topbar#topbar{cellpadding: 0, cellspacing: 0}
     %td#left
       - unless current_user
         %table{cellpadding: 0, cellspacing: 0, margin: 0, padding: 0}
@@ -27,9 +27,14 @@
       = link_to "", '/'
     %td#icon.hover
       = link_to "", search_path
-    %td#stories.hover
+    %td.stories.hover
       = link_to "", stories_path
-    %td#addstory.hover
+    %td.addstory.hover
+      = link_to "", new_story_path
+  %table#topbar2.topbar{cellpadding:0, cellspacing:0}
+    %td.stories.hover
+      = link_to "", stories_path
+    %td.addstory.hover
       = link_to "", new_story_path
   #content
     = yield
