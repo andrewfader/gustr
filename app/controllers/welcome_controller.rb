@@ -6,4 +6,8 @@ class WelcomeController < ApplicationController
   def index
 
   end
+  def welcome1; end;
+  def welcome2; end
+  def privacy; end
+  def tos; end
 end
