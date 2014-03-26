@@ -48,36 +48,8 @@
     // var lngi = $('#latlng #long').text();
     // var latlng = new google.maps.LatLng(lati, lngi);
     // if ($('span.address').length === 0) {
-      // if(navigator.geolocation) {
-        // navigator.geolocation.getCurrentPosition(function(position) {
-          // lati = position.coords.latitude;
-          // lngi = position.coords.longitude;
-          // latlng = new google.maps.LatLng(lati, lngi);
-          // map.setCenter(latlng);
-        // });
-      // }
-    // } else {
-      // geocoder.geocode( { 'address': $('span.address').text()}, function(results, status) {
-        // if (status == google.maps.GeocoderStatus.OK) {
-          // map.setCenter(results[0].geometry.location);
-          // map.setZoom(17);
-        // }
-      // });
-    // }
-    // var mapOptions = { center: latlng, zoom: 13 };
-    // map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    // map.setCenter(latlng);
-    // var input =[>* @type {HTMLInputElement} <]( document.getElementById('toppanel'));
-
-    // var floater =[>* @type {HTMLInputElement} <]( document.getElementById('floater'));
-
-    // map.controls[google.maps.ControlPosition.TOP].push(input);
-    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(floater);
 
     // input = document.getElementById('pac-input');
-    // autocomplete = new google.maps.places.Autocomplete(input);
-    // autocomplete.bindTo('bounds', map);
-    // autocomplete.setTypes(['establishment']);
 
     // var infowindow = new google.maps.InfoWindow();
     // var marker = new google.maps.Marker({

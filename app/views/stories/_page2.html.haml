@@ -1,11 +1,10 @@
 Place/Establishment name
 = f.input :place_name, placeholder: "name of the place or location for this chapter...", label: false, required: true
+#smallmap
 Expensive?
 %p
 = f.input :expensive, as: :radio_buttons, collection: ["$","$$","$$$"], label: false, required: true
 %p
-City
-= f.input :city, placeholder: "enter a city...", label: false, required: true
 Best time to go
 %p
 = f.input :time1, as: :check_boxes, collection: ["Breakfast","Lunch","Dinner"], label: false, required: true
