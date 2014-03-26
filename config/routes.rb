@@ -20,9 +20,9 @@ Gustr::Application.routes.draw do
   get :search, controller: 'stories'
   resources :welcome do
     get :index
-    get :privacy
-    get :tos
   end
+  get :privacy, controller: 'welcome'
+  get :tos, controller: 'welcome'
   get :welcome1, controller: 'welcome'
   get :welcome2, controller: 'welcome'
   resources :users

@@ -104,6 +104,9 @@ body {
     width: 80px;
   }
 }
+.right {
+  max-width: 60%;
+}
 #content {
   text-align: center;
   margin: auto;
@@ -414,4 +417,16 @@ td#left a.imglink, td#left td{
 }
 .gm-style {
   color: black;
+}
+body {
+  min-height: 100%;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  display: block;
+  margin: auto;
 }
