@@ -4,7 +4,7 @@
   %h2 Storybook: #{@story.storybook}
 %p
 .title
-  %h2 Chapter Title: #{@story.place_name}
+  %h2 Chapter Title: #{@story.place_name.try{|story| story.split(",").first}}
   - user = User.find(@story.user_id) if @story.user_id
   - if user
     %h2 by: #{link_to user, user}

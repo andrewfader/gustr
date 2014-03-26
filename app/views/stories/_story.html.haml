@@ -13,7 +13,7 @@
         =story.storybook
     = story.genre
     %br
-    = story.place_name
+    = story.place_name.try{|story| story.split(",").first }
     %br
     = story.city
 
