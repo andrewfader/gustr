@@ -3,7 +3,7 @@ $(document).ready(function() {
     function redir(string) {
       setTimeout(function() {
         alert(document.location.toString().split('/')[2])
-        window.location.href = document.location.toString().split('/')[2] + string;
+        window.location.href = string;
       }, 3000);
     }
     if(document.location.toString().indexOf('1') != 0) {
