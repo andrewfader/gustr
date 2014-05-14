@@ -20,6 +20,7 @@ class StoriesController < InheritedResources::Base
   def publish
     story = Story.find(params[:story_id])
     story.update_attributes!(visible: true)
+    tracker.track(user_id, "Publish story")
     redirect_to storybooks_path
   end
 
@@ -30,6 +31,7 @@ class StoriesController < InheritedResources::Base
       @story.update_attributes!(step: 1)
     end
     @n = (params[:page].presence || @story.step || 0).to_i
+    tracker.track(user_id, "Step #{@n}")
     unless @story.step == 6
       render "stories/page"
     else
@@ -45,8 +47,10 @@ class StoriesController < InheritedResources::Base
       tag = Tag.where(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
       if tag.present?
         tag.first.destroy!
+        tracker.track(user_id, "Untag")
       else
         tag = Tag.create!(user_ip: @ip, tag: params[:tag], story_id: params[:story_id])
+        tracker.track(user_id, "Tag")
       end
     end
     render :show
@@ -57,7 +61,7 @@ class StoriesController < InheritedResources::Base
   end
 
   def search
-
+    tracker.track(user_id, "Search")
   end
 
   def storybooks

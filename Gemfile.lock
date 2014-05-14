@@ -161,6 +161,7 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (4.7.5)
+    mixpanel-ruby (1.4.0)
     modernizr-rails (2.7.1)
     multi_json (1.10.0)
     multi_xml (0.5.5)
@@ -305,6 +306,7 @@ DEPENDENCIES
   jquery-turbolinks!
   jshint_on_rails
   mini_magick
+  mixpanel-ruby
   modernizr-rails
   omniauth
   omniauth-facebook

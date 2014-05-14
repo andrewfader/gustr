@@ -17,6 +17,8 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
+      @tracker ||= Mixpanel::Tracker.new('d0f304dcde52b884367ecfafca53ee17')
+      tracker.alias(request.ip, resource.id)
       respond_with resource
     end
   end

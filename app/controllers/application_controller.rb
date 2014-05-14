@@ -12,4 +12,16 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def tracker
+    @tracker ||= Mixpanel::Tracker.new('d0f304dcde52b884367ecfafca53ee17')
+  end
+
+  def user_id
+    if current_user
+      current_user.id
+    else
+      request.ip
+    end
+  end
 end
