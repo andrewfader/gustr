@@ -8,7 +8,7 @@ class Story < ActiveRecord::Base
   serialize :mom
   serialize :time1
   serialize :time2
-  # validates_presence_of :place_name, :expensive, :city, :time1, :time2, :nifty, :adventure, :wise, :mom
+  validates_presence_of :place_name
   geocoded_by :location
 
   def tagged_by(ip, tag)

@@ -11,7 +11,7 @@
     %tr
       %td= story.storybook
       %td= story.genre
-      %td= story.place_name
+      %td= link_to story.place_name.split(',')[0], story
       %td= story.city
       %td= story.tags.map(&:tag).map(&:titleize).to_sentence
       %td= story.user.name
