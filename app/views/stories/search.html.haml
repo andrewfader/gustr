@@ -6,6 +6,7 @@
       %th Chapter
       %th City
       %th Tags
+      %th By
   - Story.published.each do |story|
     %tr
       %td= story.storybook
@@ -13,3 +14,4 @@
       %td= story.place_name
       %td= story.city
       %td= story.tags.map(&:tag).map(&:titleize).to_sentence
+      %td= story.user.name
