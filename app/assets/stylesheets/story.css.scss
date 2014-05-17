@@ -428,3 +428,14 @@ body {
   margin: auto;
   background-color: #454140;
 }
+.about {
+  text-align: left;
+  p {
+    text-align: left;
+  }
+  ul, li {
+    list-style: disc outside none !important;
+    display: block;
+  }
+}
+

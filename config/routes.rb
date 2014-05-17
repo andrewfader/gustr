@@ -25,5 +25,6 @@ Gustr::Application.routes.draw do
   get :tos, controller: 'welcome'
   get :welcome1, controller: 'welcome'
   get :welcome2, controller: 'welcome'
+  get :about, controller: 'welcome'
   resources :users
 end

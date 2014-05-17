@@ -10,4 +10,5 @@ class WelcomeController < ApplicationController
   def welcome2; end
   def privacy; end
   def tos; end
+  def about; end
 end
