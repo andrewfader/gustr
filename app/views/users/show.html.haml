@@ -2,8 +2,8 @@
   Profile for #{@user.first_name} #{@user.last_name}
   - if current_user && current_user.id == @user.id
     = link_to "(Edit)", edit_registration_path(@user)
-- if current_user.image_url
-  = image_tag current_user.image_url
+- if @user.image_url
+  = image_tag @user.image_url
 
 %ul#user
   - if @user.city
