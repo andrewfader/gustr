@@ -1,6 +1,7 @@
 Gustr::Application.routes.draw do
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks" }
-  root to: 'welcome#index'
+  root to: 'images#new'
+  resources :images
   # resources :businesses
   # resources :events
   # resources :users

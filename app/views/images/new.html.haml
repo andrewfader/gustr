@@ -1,0 +1,5 @@
+=simple_form_for @image do |f|
+  =f.input :upload
+  =f.input :caption
+  =f.input :user_id, as: :hidden, input_html: {value: current_user.id} if current_user
+  =f.submit
