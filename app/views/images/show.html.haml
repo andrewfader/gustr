@@ -1,7 +1,7 @@
 =image_tag @image.upload.small.url
 .floater
   .caption
-    =@image.caption.html_safe
+    =@image.caption.try(&:html_safe)
   %textarea
   .ok
     Save
