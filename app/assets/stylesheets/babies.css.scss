@@ -6,8 +6,39 @@ body {
   text-align: center;
   display: block;
   margin: auto;
+  margin-top: 25px;
 }
 
-h1 { 
+h1, label.file {
   color: #FF6347
+}
+label.file {
+  font-size: 1.8em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.floater {
+  background: url('/assets/bubble.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 220px;
+  height: 160px;
+  color: black;
+  display: block;
+  padding: 25px 5px 5px 5px;
+  position: absolute !important;
+  left: 60%;
+  top: 100px;
+  display: none;
+  textarea {
+    display: none;
+  }
+  .caption {
+    margin-top: 20%;
+  }
+  .ok {
+    display: none;
+    width: 88px;
+  }
 }
