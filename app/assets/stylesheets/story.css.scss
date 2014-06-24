@@ -4,8 +4,6 @@ a:visited {
 body {
   margin: auto;
   padding: 0;
-  background-color: #454140;
-  color: white;
   width: 768px;
 }
 @media only screen and (max-width:642px) {
@@ -420,13 +418,6 @@ td#left a.imglink, td#left td{
 }
 body {
   min-height: 100%;
-}
-.footer {
-  clear: both;
-  text-align: center;
-  display: block;
-  margin: auto;
-  background-color: #454140;
 }
 .about {
   text-align: left;

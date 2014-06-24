@@ -9,33 +9,9 @@
     = javascript_include_tag "application"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     = csrf_meta_tags
+  %h1
+    Gustr
   %body
-  %table.topbar#topbar{cellpadding: 0, cellspacing: 0}
-    %td#left
-      - unless current_user
-        %table{cellpadding: 0, cellspacing: 0, margin: 0, padding: 0}
-          %tr
-            = link_to image_tag('signin.jpg'), new_user_session_path, class: 'imglink'
-          %tr
-            = link_to image_tag('register.jpg'), new_user_registration_path, class: 'imglink'
-      - else
-        - if current_user.image_url
-          = link_to image_tag(current_user.image_url), current_user
-        %span=link_to "Log out", destroy_user_session_path
-        %span=link_to "My profile", current_user
-    %td#logo.hover
-      = link_to "", '/'
-    %td#icon.hover
-      = link_to "", search_path
-    %td.stories.hover
-      = link_to "", stories_path
-    %td.addstory.hover
-      = link_to "", new_story_path
-  %table#topbar2.topbar{cellpadding:0, cellspacing:0}
-    %td.stories.hover
-      = link_to "", stories_path
-    %td.addstory.hover
-      = link_to "", new_story_path
   #content
     = yield
   .footer
