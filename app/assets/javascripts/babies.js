@@ -1,14 +1,17 @@
 var teAlready;
 function showTe() {
-    if(window.teAlready == undefined) {
-      $('.floater textarea').show();
-      $('.floater .ok').show();
-      $('.floater textarea').jqte();
-      $('.floater textarea').jqteVal($('.floater .caption').val());
-      $('.floater .caption').hide();
-      window.teAlready = 1;
-      $('a.jqte_tool_label').click();
+  if(window.teAlready == undefined) {
+    $('.floater textarea').show();
+    $('.floater .ok').show();
+    $('.floater .caption').hide();
+    window.teAlready = 1;
+    $('.floater textarea').jqte();
+    if($.trim($('.floater .caption').text() == "")) {
+      $('.floater textarea').jqteVal($.trim($('.floater .caption').text()));
     }
+    $('a.jqte_tool_label').click();
+    $('a.jqte_tool_label').click();
+  }
 }
 function bindEvents() {
   var arr = window.location.toString().split('/');
@@ -77,12 +80,14 @@ function bindEvents() {
       $('.floater textarea').jqte();
       $('.floater .caption').show();
       $('.floater .ok').hide();
+      setTimeout(function() {
+        window.teAlready = undefined;
+      }, 1000);
     }
   });
   $('.ok').button();
   $('.floater').click(function() { showTe(); });
-  if($('.floater .caption').text() == "") {
-    showTe();
+  if($.trim($('.floater .caption').text() == "")) {
   }
 }
 
