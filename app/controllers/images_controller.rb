@@ -5,13 +5,13 @@ class ImagesController < InheritedResources::Base
   end
 
   def new
-    @user_id = current_user.try(&:id) || request.ip.gsub(".","").to_i
+    @user_id = current_user.try(&:id) || request.ip.gsub(".","")
     super
   end
 
   def show
     @image = Image.find(params[:id])
-    @editable = (current_user && (@image.user_id == current_user.id)) || (@image.user_id == request.ip.gsub(".","").to_i)
+    @editable = (current_user && (@image.user_id == current_user.id)) || (@image.user_id == request.ip.gsub(".",""))
     super
   end
 
