@@ -1,16 +1,18 @@
 var teAlready;
 function showTe() {
-  if(window.teAlready == undefined) {
-    $('.floater textarea').show();
-    $('.floater .ok').show();
-    $('.floater .caption').hide();
-    window.teAlready = 1;
-    $('.floater textarea').jqte();
-    if($.trim($('.floater .caption').text() == "")) {
-      $('.floater textarea').jqteVal($.trim($('.floater .caption').text()));
+  if($('.editable').text() === "true") {
+    if(window.teAlready == undefined) {
+      $('.floater textarea').show();
+      $('.floater .ok').show();
+      $('.floater .caption').hide();
+      window.teAlready = 1;
+      $('.floater textarea').jqte();
+      if($.trim($('.floater .caption').text() == "")) {
+        $('.floater textarea').jqteVal($.trim($('.floater .caption').text()));
+      }
+      $('a.jqte_tool_label').click();
+      $('a.jqte_tool_label').click();
     }
-    $('a.jqte_tool_label').click();
-    $('a.jqte_tool_label').click();
   }
 }
 function bindEvents() {
@@ -50,24 +52,26 @@ function bindEvents() {
 
     $('.floater').show();
   });
-  $('.floater').draggable({
-    stop: function() {
-      $.ajax({
-        type: "PUT",
-        url: url + '.json',
-        data: {image: { posX: $('.floater').position().left, posY: $('.floater').position().top}}
-      })
-    }
-  });
-  $('.floater').resizable({
-    stop: function() {
-      $.ajax({
-        type: "PUT",
-        url: url + '.json',
-        data: {image: { width: $('.floater').width(), height: $('.floater').height(), posX: $('.floater').position().left, posY: $('.floater').position().top}}
-      })
-    }
-  })
+  if($('.editable').text() === "true") {
+    $('.floater').draggable({
+      stop: function() {
+        $.ajax({
+          type: "PUT",
+          url: url + '.json',
+          data: {image: { posX: $('.floater').position().left, posY: $('.floater').position().top}}
+        })
+      }
+    });
+    $('.floater').resizable({
+      stop: function() {
+        $.ajax({
+          type: "PUT",
+          url: url + '.json',
+          data: {image: { width: $('.floater').width(), height: $('.floater').height(), posX: $('.floater').position().left, posY: $('.floater').position().top}}
+        })
+      }
+    })
+  }
 
   $('.ok').click(function() {
     if (window.teAlready = 1) {

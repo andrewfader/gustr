@@ -114,32 +114,32 @@ body {
     padding-bottom: 50px;
     text-align: left;
   }
-  ul#buttons {
-    margin-top: 50px;
-    input, li.btn {
-      border-radius: 10px;
-      background-color: #009900;
-      text-align: center;
-      font-weight: bold;
-      font-size: 25px;
-      margin: 10px auto;
-      width: 320px;
-      height: 60px;
-      box-shadow: 5px 5px 5px black;
-      display: block;
-      padding: 10px;
-      display: block;
-      text-decoration: none;
-      color: black;
-      a {
-        margin: 0;
-        padding: 10px;
-        display: block;
-        text-decoration: none;
-        color: black;
-      }
-    }
-  }
+  /* ul#buttons { */
+    /* margin-top: 50px; */
+    /* input, li.btn { */
+      /* border-radius: 10px; */
+      /* background-color: #009900; */
+      /* text-align: center; */
+      /* font-weight: bold; */
+      /* font-size: 25px; */
+      /* margin: 10px auto; */
+      /* width: 320px; */
+      /* height: 60px; */
+      /* box-shadow: 5px 5px 5px black; */
+      /* display: block; */
+      /* padding: 10px; */
+      /* display: block; */
+      /* text-decoration: none; */
+      /* color: black; */
+      /* a { */
+        /* margin: 0; */
+        /* padding: 10px; */
+        /* display: block; */
+        /* text-decoration: none; */
+        /* color: black; */
+      /* } */
+    /* } */
+  /* } */
   ul#linkbuttons {
     box-shadow: 5px 5px 5px black;
     .left, .right, li {
@@ -220,24 +220,24 @@ table.progress {
     }
   }
 }
-label.checkbox {
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
-  display: inline-block;
-}
+/* label.checkbox { */
+  /* border: 1px solid black; */
+  /* padding: 10px; */
+  /* margin: 10px; */
+  /* display: inline-block; */
+/* } */
 * {
   font-family: 'PT Sans', sans-serif;
 }
-form:not(.edit_user) {
-  input.string, textarea {
-    min-width: 380px;
-    min-height: 100px;
-    padding: 10px;
-    margin: 20px;
-    border: 1px solid black;
-  }
-}
+/* form:not(.edit_user) { */
+  /* input.string, textarea { */
+    /* min-width: 380px; */
+    /* min-height: 100px; */
+    /* padding: 10px; */
+    /* margin: 20px; */
+    /* border: 1px solid black; */
+  /* } */
+/* } */
 td a { display: block; }
 .citytime, .taglist, .why, .adventure, .nifty, .wise, .mom {
   padding: 20px;
@@ -344,20 +344,20 @@ table.datatable {
     color: black;
   }
 }
-.input.check_boxes, .input.radio_buttons {
-  display: inline-block;
-  label {
-    text-align: center;
-    display: block;
-    background-color: white;
-    color: black;
-    font-size: 28px;
-    font-weight: bold;
-    /* input { */
-      /* display: none; */
-    /* } */
-  }
-}
+/* .input.check_boxes, .input.radio_buttons { */
+  /* display: inline-block; */
+  /* label { */
+    /* text-align: center; */
+    /* display: block; */
+    /* background-color: white; */
+    /* color: black; */
+    /* font-size: 28px; */
+    /* font-weight: bold; */
+    /* [> input { <] */
+      /* [> display: none; <] */
+    /* [> } <] */
+  /* } */
+/* } */
 ul#user {
   li {
     display: block;

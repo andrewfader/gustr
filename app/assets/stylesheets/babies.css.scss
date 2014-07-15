@@ -42,3 +42,8 @@ label.file {
     width: 88px;
   }
 }
+input.string, textarea {
+  display: block;
+  margin: 10px auto;
+}
+.editable { display: none }

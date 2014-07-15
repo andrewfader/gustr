@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624214718) do
+ActiveRecord::Schema.define(version: 20140715220445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20140624214718) do
     t.integer  "posY"
     t.integer  "width"
     t.integer  "height"
+    t.boolean  "question1"
+    t.text     "question1a"
+    t.string   "question2"
+    t.string   "question2a"
+    t.string   "question3"
+    t.text     "question4"
   end
 
   create_table "keywords", force: true do |t|
