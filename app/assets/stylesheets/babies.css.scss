@@ -18,6 +18,10 @@ label.file {
   margin-bottom: 12px;
 }
 
+.floater:not(.visible) {
+  display: none;
+}
+
 .floater {
   background: url('/assets/bubble.png');
   background-repeat: no-repeat;
@@ -30,7 +34,6 @@ label.file {
   position: absolute !important;
   left: 60%;
   top: 100px;
-  display: none;
   textarea {
     display: none;
   }
@@ -47,3 +50,30 @@ input.string, textarea {
   margin: 10px auto;
 }
 .editable { display: none }
+ul.images {
+  text-align: center;
+  margin: auto;
+  padding: 0;
+  list-style: none;
+  li {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+}
+#content {
+  text-align: center;
+  margin: auto;
+  margin-top: 25px;
+  margin-right: 0;
+}
+form.edit_image {
+  .input {
+    margin: 35px;
+  }
+  label.radio {
+    display: block;
+  }
+}

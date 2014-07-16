@@ -1,7 +1,7 @@
 =simple_form_for @image do |f|
-  =f.input :question1, as: :check_boxes, collection: ["Yes","No"], label: "Do you want to continue captioning photos?"
+  =f.input :question1, as: :radio_buttons, collection: ["Yes","No"], label: "Do you want to continue captioning photos?"
   =f.input :question1a, label: "Why"
-  =f.input :question2, label: "When you take a photo, do you like to record in some way the location where you took the photo?", as: :check_boxes, collection: ["Yes","No"]
+  =f.input :question2, label: "When you take a photo, do you like to record in some way the location where you took the photo?", as: :radio_buttons, collection: ["Yes","No"]
   =f.input :question2a, label: "Is there any information about the photos you take that is always important to remember, for example: feelings, time, place, people?"
   =f.input :question3, label: "When you create something artistic, whose recognition do you value more:", collection: ["Strangers'","Friends'","Relatives'"]
   =f.input :question4, label: "What is missing from your photo captioning experience?"
