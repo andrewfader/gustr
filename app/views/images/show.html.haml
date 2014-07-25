@@ -1,12 +1,13 @@
-.editable= @editable
-=image_tag @image.upload.small.url
-.floater
-  .caption
-    =@image.caption.try(&:html_safe)
+.imagebox
+  .editable= @editable
+  =image_tag @image.upload.small.url
+  .floater
+    .caption
+      =@image.caption.try(&:html_safe)
+    -if @editable
+      %textarea
+      .ok
+        Save
   -if @editable
-    %textarea
-    .ok
-      Save
--if @editable
-  .post
-    =button_to "Post", edit_image_path(@image), method: :get
+    .post
+      =button_to "Post", edit_image_path(@image), method: :get

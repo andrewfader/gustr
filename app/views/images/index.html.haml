@@ -3,9 +3,10 @@
   =f.input :upload, label: "Select Photo"
 %p
 %ul.images
-  -@images.each_with_index do |image, index|
+  -@images.reverse.each_with_index do |image, index|
     %li.image
-      =link_to image_tag(image.upload.small.url), image_path(image)
-      .floater.visible{data: {width: image.width, height: image.height, left: image.posX, top: image.posY + index*455 + 116}}
-        .caption
-          =image.caption.try(&:html_safe)
+      .imagebox
+        =link_to image_tag(image.upload.small.url), image_path(image)
+        .floater.visible{data: {width: image.width, height: image.height, left: image.posX, top: image.posY + index*555+50}}
+          .caption
+            =image.caption.try(&:html_safe)

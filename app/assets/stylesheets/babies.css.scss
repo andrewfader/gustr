@@ -55,10 +55,7 @@ ul.images {
   margin: auto;
   padding: 0;
   list-style: none;
-  padding-top: 20px;
   li {
-    margin-top: 100px;
-    margin-bottom: 100px;
     margin-left: 0;
     margin-right: 0;
     padding: 0;
@@ -77,4 +74,8 @@ form.edit_image {
   label.radio {
     display: block;
   }
+}
+.imagebox img {
+  padding: 50px;
+  margin: 50px;
 }
