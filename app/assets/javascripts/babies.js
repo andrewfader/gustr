@@ -62,6 +62,7 @@ function bindEvents() {
     });
     if($('.editable').text() === "true") {
       $('.floater').draggable({
+        containment: "parent",
         stop: function() {
           $.ajax({
             type: "PUT",

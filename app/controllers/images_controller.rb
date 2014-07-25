@@ -4,6 +4,12 @@ class ImagesController < InheritedResources::Base
     params.permit(image: [:upload, :caption, :user_id, :posX, :posY, :width, :height, :question1, :question1a, :question2, :question2a, :question3, :question4])
   end
 
+  def index
+    @image = Image.new
+    @user_id = current_user.try(&:id) || request.ip.gsub(".","")
+    super
+  end
+
   def new
     @user_id = current_user.try(&:id) || request.ip.gsub(".","")
     super

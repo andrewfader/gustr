@@ -1,3 +1,7 @@
+=simple_form_for @image do |f|
+  =f.input :user_id, input_html: { value: @user_id }, as: :hidden
+  =f.input :upload, label: "Select Photo"
+%p
 %ul.images
   -@images.each_with_index do |image, index|
     %li.image
