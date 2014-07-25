@@ -6,6 +6,6 @@
   -@images.each_with_index do |image, index|
     %li.image
       =link_to image_tag(image.upload.small.url), image_path(image)
-      .floater.visible{data: {width: image.width, height: image.height, left: image.posX, top: image.posY + index*450 + 80}}
+      .floater.visible{data: {width: image.width, height: image.height, left: image.posX, top: image.posY + index*455 + 116}}
         .caption
           =image.caption.try(&:html_safe)
