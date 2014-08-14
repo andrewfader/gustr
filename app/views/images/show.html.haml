@@ -11,3 +11,6 @@
   -if @editable
     .post
       =button_to "Post", edit_image_path(@image), method: :get
+  -else
+    .recaption
+      =button_to "Recaption", image_recaption_path(@image), method: :get

@@ -25,4 +25,17 @@ class ImagesController < InheritedResources::Base
     super { images_path }
   end
 
+  def recaption
+    @image = Image.find(params[:image_id])
+    image = Image.new
+    image.upload = @image.upload
+    if current_user
+      image.user_id = current_user.id
+    else
+      image.user_id = request.ip.gsub(".","")
+    end
+
+    image.save!
+    redirect_to image_path(image)
+  end
 end
