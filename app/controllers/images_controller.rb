@@ -6,18 +6,18 @@ class ImagesController < InheritedResources::Base
 
   def index
     @image = Image.new
-    @user_id = current_user.try(&:id) || request.ip.gsub(".","")
+    @user_id = current_user.try(&:id) || request.ip.gsub(".","").gsub(":",""))
     super
   end
 
   def new
-    @user_id = current_user.try(&:id) || request.ip.gsub(".","")
+    @user_id = current_user.try(&:id) || request.ip.gsub(".","").gsub(":",""))
     super
   end
 
   def show
     @image = Image.find(params[:id])
-    @editable = (current_user && (@image.user_id == current_user.id)) || (@image.user_id == request.ip.gsub(".",""))
+    @editable = (current_user && (@image.user_id == current_user.id)) || (@image.user_id == request.ip.gsub(".","").gsub(":",""))
     super
   end
 
@@ -42,7 +42,7 @@ class ImagesController < InheritedResources::Base
     if current_user
       image.user_id = current_user.id
     else
-      image.user_id = request.ip.gsub(".","")
+      image.user_id = request.ip.gsub(".","").gsub(":","")
     end
 
     image.save!
