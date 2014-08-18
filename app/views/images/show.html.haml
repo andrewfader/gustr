@@ -1,7 +1,7 @@
 .imagebox
   .editable= @editable
   =image_tag @image.upload.small.url
-  .floater
+  .floater.visible{data: {width: @image.width, height: @image.height, left: @image.posX, top: @image.posY}}
     .caption
       =@image.caption.try(&:html_safe)
     -if @editable
@@ -14,3 +14,15 @@
   -else
     .recaption
       =button_to "Recaption", image_recaption_path(@image), method: :get
+%p
+%ul.images
+  - if @image.recaptions.present?
+    #{@image.recaptions.count} recaptions
+    %p
+    - @image.recaptions.each_with_index do |recap, index|
+      %li.image
+        .imagebox
+          =link_to(image_tag(recap.upload.small.url), image_path(recap))
+          .floater.visible{data: {width: recap.width, height: recap.height, left: recap.posX, top: recap.posY + (index+1)*555+50}}
+            .caption
+              =recap.caption.try(&:html_safe)

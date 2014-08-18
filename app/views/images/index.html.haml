@@ -3,7 +3,7 @@
   =f.input :upload, label: "Select Photo"
 %p
 %ul.images
-  -@images.reverse.each_with_index do |image, index|
+  -@images.where(parent_id: nil).sort_by(&:created_at).reverse.each_with_index do |image, index|
     %li.image
       .imagebox
         =link_to image_tag(image.upload.small.url), image_path(image)

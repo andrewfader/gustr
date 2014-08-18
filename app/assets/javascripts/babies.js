@@ -41,8 +41,8 @@ function bindEvents() {
         data: {image: { width: $('.floater').width(), height: $('.floater').height()}}
       })
     } else {
-      $('.floater').css('width', data.width);
-      $('.floater').css('height', data.height);
+      $($('.floater')[0]).css('width', data.width);
+      $($('.floater')[0]).css('height', data.height);
     }
 
     if(data.posX == null || data.posY == null) {
@@ -52,14 +52,14 @@ function bindEvents() {
         data: {image: { posX: $('.floater').position().left, posY: $('.floater').position().top}}
       })
     } else {
-      $('.floater').css('top', data.posY);
-      $('.floater').css('left', data.posX);
+      $($('.floater')[0]).css('top', data.posY);
+      $($('.floater')[0]).css('left', data.posX);
     }
 
     $('.floater').show();
   });
   if($('.editable').text() === "true") {
-    $('.floater').draggable({
+    $($('.floater')[0]).draggable({
       containment: ".imagebox",
       stop: function() {
         $.ajax({
@@ -69,7 +69,7 @@ function bindEvents() {
         })
       }
     });
-    $('.floater').resizable({
+    $($('.floater')[0]).resizable({
       stop: function() {
         $.ajax({
           type: "PUT",

@@ -25,10 +25,20 @@ class ImagesController < InheritedResources::Base
     super { images_path }
   end
 
+  def edit
+    @image = Image.find(params[:id])
+    if @image.parent_id
+      redirect_to image_path(@image.parent_id)
+    else
+      redirect_to images_path
+    end
+  end
+
   def recaption
     @image = Image.find(params[:image_id])
     image = Image.new
     image.upload = @image.upload
+    image.parent_id = @image.id
     if current_user
       image.user_id = current_user.id
     else
