@@ -6,12 +6,12 @@ class ImagesController < InheritedResources::Base
 
   def index
     @image = Image.new
-    @user_id = current_user.try(&:id) || request.ip.gsub(".","").gsub(":",""))
+    @user_id = current_user.try(&:id) || request.ip.gsub(".","").gsub(":","")
     super
   end
 
   def new
-    @user_id = current_user.try(&:id) || request.ip.gsub(".","").gsub(":",""))
+    @user_id = current_user.try(&:id) || request.ip.gsub(".","").gsub(":","")
     super
   end
 

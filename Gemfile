@@ -34,7 +34,5 @@ group :doc do
 end
 
 group :development do
-  gem 'jazz_hands'
-  gem 'debugger'
   gem 'sqlite3'
 end

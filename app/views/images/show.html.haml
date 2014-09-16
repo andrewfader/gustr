@@ -9,6 +9,8 @@
       .ok
         Save
   -if @editable
+    = simple_form_for @image do |f|
+      = f.input :place_name, placeholder: "name of the place or location for this chapter...", label: false, required: true
     .post
       =button_to "Post", edit_image_path(@image), method: :get
   -else
