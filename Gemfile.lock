@@ -289,7 +289,7 @@ GEM
     unf_ext (0.0.6)
     warden (1.2.3)
       rack (>= 1.0)
-    yard (0.8.7.4)
+    yard (0.9.26)
 
 PLATFORMS
   ruby
